@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept Development — Support</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1b1b1f;
+    --muted: #55555e;
+    --rule: #e2e2e7;
+    --accent: #0a5fc2;
+    --card: #f6f6f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111114;
+      --fg: #f2f2f5;
+      --muted: #a6a6b0;
+      --rule: #2c2c33;
+      --accent: #74b6f7;
+      --card: #1b1b20;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2.5rem 1.25rem 4rem;
+    background: var(--bg);
+    color: var(--fg);
+    font: 1rem/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 42rem; margin: 0 auto; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .35rem; }
+  h2 {
+    font-size: 1.2rem;
+    margin: 2.75rem 0 .6rem;
+    padding-top: .9rem;
+    border-top: 1px solid var(--rule);
+  }
+  h3 { font-size: 1rem; margin: 1.5rem 0 .3rem; }
+  .updated { color: var(--muted); font-size: .9rem; margin: 0 0 2rem; }
+  .lede {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: .75rem;
+    padding: 1rem 1.25rem;
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem;
+  }
+  nav { margin: 0 0 1rem; font-size: .95rem; }
+  nav a { margin-right: 1rem; white-space: nowrap; }
+  ul { padding-left: 1.25rem; }
+  li { margin: .35rem 0; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .92em;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: .3rem;
+    padding: .1em .35em;
+  }
+  a { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: .2rem; }
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+  footer { color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Support</h1>
+  <p class="updated">Concept Development &middot; last updated 9 August 2026</p>
+
+  <p class="lede">Email <a href="mailto:info@conceptdev.com.au">info@conceptdev.com.au</a>
+  and a real person will answer. Tell us which app, which device, and what you were
+  doing &mdash; that is usually enough to sort it out in one reply.</p>
+
+  <nav>
+    <a href="#stiction">Stiction</a>
+    <a href="#conversion">Conversion</a>
+    <a href="#purchases">Purchases</a>
+    <a href="#privacy">Privacy</a>
+  </nav>
+
+  <h2 id="purchases">Purchases, restoring and refunds</h2>
+  <p>This is the same for every app we make.</p>
+
+  <h3>I paid, but the app still thinks I have not</h3>
+  <p>Find <strong>Restore Purchase</strong> in the app and tap it. That asks the App
+  Store again and re-applies what you own. It works on any device signed in to the Apple
+  Account that made the purchase.</p>
+  <p>If it reports nothing to restore, you are almost certainly signed in to a different
+  Apple Account from the one that bought it.</p>
+
+  <h3>Do I have to pay again on my other device?</h3>
+  <p>No. Purchases follow your Apple Account. Install the app, tap Restore Purchase, and
+  it is yours again.</p>
+
+  <h3>The store says it is unavailable</h3>
+  <p>The App Store could not be reached or is not answering. It is almost always
+  temporary &mdash; check your connection and try again shortly. Nothing is charged.</p>
+
+  <h3>Refunds</h3>
+  <p>Apple takes the payment, so Apple issues refunds &mdash; we are not able to. Use
+  <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+
+  <h3>Will I lose what I have if I delete an app?</h3>
+  <p>Anything saved on the device goes with it. Purchases can always be restored;
+  progress and settings cannot, unless the app says otherwise.</p>
+
+  <h2 id="stiction">Stiction</h2>
+
+  <h3>How do I play?</h3>
+  <p>Tap to fire. That is the whole control scheme &mdash; the rest is meant to be worked
+  out. There is a <em>How to Play</em> screen in Settings if you would rather be told.</p>
+
+  <h3>A level will not open</h3>
+  <p>Levels open in order: clear the one before it. Clearing means reaching that level's
+  target, which is printed on its card.</p>
+
+  <h3>I cleared a level, but it is locked again on a harder setting</h3>
+  <p>Deliberate. Progress is kept per difficulty. Clearing a level opens the next one at
+  that setting and every easier setting &mdash; but not at a harder one, or the
+  difficulty dial would be a way to skip the game.</p>
+  <p>It does work downwards: finish something on a hard setting and it stays open if you
+  drop back down.</p>
+
+  <h3>My scores disappeared when I moved the difficulty</h3>
+  <p>They have not. Best scores are kept per difficulty too, so each setting keeps its
+  own records. Move the dial back and they are where you left them.</p>
+
+  <h3>Cheat mode is not saving my scores</h3>
+  <p>Correct, and intended. With every level already open, a run in cheat mode cannot set
+  a record or unlock anything. Switch it off in Settings and scores count again.</p>
+
+  <h3>I cannot see the leaderboards</h3>
+  <p>Leaderboards are Game Center, so you need to be signed in to it &mdash; Settings
+  &rsaquo; Game Center on your device. The button stays hidden while you are signed out
+  rather than showing something that cannot work. Scores set in cheat mode are never
+  submitted.</p>
+
+  <h3>Does my progress sync between devices?</h3>
+  <p>No. Progress is stored on the device only. Your purchase follows your Apple Account;
+  your scores and cleared levels do not travel with it.</p>
+
+  <h2 id="conversion">Conversion</h2>
+
+  <h3>Do I need a connection?</h3>
+  <p>Only for currency. Every other category works entirely offline.</p>
+
+  <h3>My exchange rates look out of date</h3>
+  <p>Rates are downloaded when you open the Currency category and cached so conversions
+  keep working without a connection. If the cached rates are stale, open Currency with a
+  connection available and they will refresh.</p>
+  <p>Rates are published third-party figures for reference. They are not a live dealing
+  rate, and they will not match exactly what a bank or a card charges you.</p>
+
+  <h3>It opens on the wrong units</h3>
+  <p>Conversion deliberately opens where you left it &mdash; the last category and pair
+  of units you used. Change them once and that becomes the new starting point.</p>
+
+  <h2 id="privacy">Privacy</h2>
+  <p>None of our apps collect, store or transmit personal information. There are no
+  accounts, no analytics, no advertising, no tracking, and no third-party SDKs.</p>
+  <p>Each app has its own policy setting out exactly what it does and does not do:</p>
+  <ul>
+    <li><a href="stiction.html">Stiction &mdash; Privacy Policy</a></li>
+    <li><a href="./">Conversion &mdash; Privacy Policy</a></li>
+  </ul>
+
+  <h2>Anything else</h2>
+  <p>Bugs, ideas, something that feels wrong, or a translation that reads badly in your
+  language &mdash; all welcome:
+  <a href="mailto:info@conceptdev.com.au">info@conceptdev.com.au</a></p>
+
+  <hr>
+  <footer>
+    <p>&copy; 2026 Concept Development</p>
+  </footer>
+
+</main>
+</body>
+</html>
