@@ -1,0 +1,114 @@
+# Concept Development — website
+
+Static site. No build step, no dependencies, no framework. Open `index.html` in a
+browser, or serve the folder:
+
+```bash
+cd ~/Desktop/ConceptDev && python3 -m http.server 8765
+```
+
+## Files
+
+| Path | What it is |
+|---|---|
+| `index.html` | The site. Everything live is here. |
+| `foodie.html` | Foodie product page — **parked, not linked from anywhere** |
+| `conversion.html` | Conversion product page — **parked, not linked from anywhere** |
+| `assets/css/site.css` | The whole design system — tokens at the top |
+| `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
+| `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
+| `assets/img/foodie/` | Screenshots from `~/Desktop/Foodie4/screenshots` |
+| `assets/img/conversion/` | Screenshots from `~/Desktop/Conversion4/Screenshots` |
+
+## The mark
+
+The original was a small raster with a bevel, a gloss highlight and a drop
+shadow. It is redrawn here as flat geometry in an SVG — a disc split on the
+vertical axis, ink on the left, gold on the right, with a "D" counter cut out of
+the left half. It is resolution-independent, and it swaps to a light ink half in
+dark mode.
+
+Colours: `#1c1c20` / `#9c8a34` in light, `#f2f2f4` / `#c9b45c` in dark. The site
+accent is the same gold darkened to `#6b5f1c` so it can legally carry text
+(5.9:1); the undarkened gold is used for fills only.
+
+## Design notes
+
+- **Type and space are fluid** (`clamp()` throughout), so there are very few
+  breakpoints. Layout breakpoints are 640, 700, 800, 900 and 1000px.
+- **Dark mode** follows `prefers-color-scheme`, with a `prefers-contrast: more`
+  branch that collapses muted text to full ink.
+- **Reduced motion** disables every transition and the scroll reveal.
+- **Accessibility**: skip link, one `h1` per page, semantic landmarks, visible
+  focus rings, 44px minimum button height, alt text on every screenshot, and the
+  wide comparison table scrolls inside its own container rather than the page.
+- No web fonts — system stack only, so there is no flash and nothing to download.
+
+## Copy
+
+Modelled on how small Apple-platform studios actually write — Panic, Tapbots,
+Rogue Amoeba, Red Sweater, Iconfactory, Shiny Frog, Sindre Sorhus, Bear, Things,
+Mela, Pestle, Paprika were surveyed. The conventions of that genre:
+
+- **Short headline, often a fragment.** "Be iconic." · "Robots for iOS & Mac" ·
+  "Quality Crafted Apps" · "Uncommonly Great Apps for Your Mac" · "Strange name.
+  Great software."
+- **One sentence of self-description, specific about place and people.** "Tapbots
+  has been crafting fine apps since 2008. We are 3 humans living in North Texas
+  and Canada."
+- **Each app gets a one-line tagline**, two to five words — "Any audio,
+  everywhere", "Record any audio". Never a paragraph before the reader knows what
+  the app is.
+- **Feature blocks are a short heading plus one or two sentences**, and the
+  heading is usually the thing you do: "Save a recipe while browsing", "Scan a
+  recipe from a book", "Full screen cook mode".
+- **Nobody writes a process manifesto.** Craft is signalled by a single adjective
+  in the tagline and then demonstrated in screenshots.
+
+Written for customers, not developers. Four rules:
+
+- **Describe features, not qualities.** "Search covers ingredients as well as
+  names", not "quick to open" or "easy to read". If a sentence would still be
+  true of a different app, it is not earning its place.
+- **State it, do not perform it.** No jokes, no winks, no scene-setting about
+  wooden spoons and kettles, no "honestly" or "genuinely". Short declarative
+  sentences.
+- **No implementation detail.** No framework names, no file formats, no contrast
+  ratios. Where a technical fact earns its place, state the outcome instead.
+- **Nothing about earlier versions.** No rewrites, no legacy apps, no migrating
+  from an older release.
+
+Copy should also be scale-free: nothing that counts the apps ("both", "two
+apps"), so a third product needs no rewrite.
+
+If you edit, keep all of it. Jargon and self-congratulation both creep back
+easily.
+
+## Screenshots
+
+`assets/img/foodie/` and `assets/img/conversion/` hold more captures than the
+pages currently use, kept as a swap pool. Sources:
+`~/Desktop/Foodie4/screenshots` and `~/Desktop/Conversion4/Screenshots`.
+
+## Current state
+
+The site is a **single page**. All four apps — Foodie, Conversion, Stiction and
+DarkFrame — appear as cards under a "Coming soon" badge, and none of them links
+to a detail page.
+
+`foodie.html` and `conversion.html` are complete and still on disk, but nothing
+links to them, so they will not be crawled if the site is published. Re-linking
+either one means restoring its nav entry, its footer entry, and the card's
+`product-card__link`, and dropping `product-card--soon` from that card.
+
+Contact address is **info@conceptdev.com.au**; the domain is conceptdev.com.au.
+
+## Before this goes live
+
+- Foodie's pricing copy ("one-time purchase", "uncapped free tier") describes the
+  recommended model from `Foodie4/docs/recipe-manager-research.md`, not something
+  the app implements yet.
+- Neither page has an App Store link. Both end on an email call-to-action.
+- The competitor table on `foodie.html` carries an August 2026 date in its
+  caption. Re-check the prices before publishing.
+- `og:image` is not set on any page.

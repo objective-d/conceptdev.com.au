@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en-AU" class="page-foodie">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foodie — a recipe manager that keeps your recipes yours | Concept Development</title>
+<meta name="description" content="Foodie is a recipe manager for iPad and iPhone. Save any recipe page from the share sheet, sync to your iCloud account, export everything back out. One-time purchase, no caps, no subscription.">
+<meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d10" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Foodie — a recipe manager that keeps your recipes yours">
+<meta property="og:description" content="Save any recipe page from the share sheet. Sync to your iCloud account. Export everything back out. No subscription, no recipe cap.">
+<meta property="og:type" content="product">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/logo/mark.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="wordmark" href="index.html">
+      <svg class="wordmark__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><mask id="cdm-a"><rect width="100" height="100" fill="#fff"/><path d="M50 23 A27 27 0 0 0 50 77 Z" fill="#000"/></mask></defs><g mask="url(#cdm-a)"><path class="mark-ink" d="M50 2 A48 48 0 0 0 50 98 Z"/><path class="mark-gold" d="M50 2 A48 48 0 0 1 50 98 Z"/></g></svg>
+      Concept&nbsp;Development
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="foodie.html">Foodie</a>
+      <a href="conversion.html">Conversion</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="app-hero">
+    <div class="wrap">
+      <div class="app-hero__id">
+        <img class="app-hero__icon" src="assets/img/icons/foodie.png" alt="Foodie app icon" width="88" height="88">
+        <div>
+          <h1>Foodie</h1>
+          <p>Effortless recipe management</p>
+        </div>
+      </div>
+
+      <p class="app-hero__pitch">
+        All the bells, and all the whistles too.
+      </p>
+      <p class="lede">
+        Manage your own recipes, or import from any website with a couple of
+        taps. Everything is backed up to your iCloud account, and everything
+        can be exported back out. Buy it once — no subscription, and no limit
+        on how much you keep.
+      </p>
+
+      <figure class="shot shot-hero reveal">
+        <img src="assets/img/foodie/land-01-library-all-recipes.jpg"
+             alt="Foodie on iPad showing the recipe library: a sidebar with Library and Collections sections beside a grid of recipe tiles with photos, star ratings and cooking times."
+             width="1800" height="1241" loading="eager" decoding="async">
+        <figcaption>Recipes across the screen, your collections down the side.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================ WHY ============================ -->
+  <section class="section section--sunken rule-top">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--accent">The short version</p>
+        <h2>Buy it once. Keep as many as you like. Take them with you.</h2>
+      </div>
+
+      <div class="features features--3">
+        <div class="feature reveal">
+          <h3>No limit on recipes</h3>
+          <p>
+            Keep five or five thousand. Foodie sets no cap, so moving a
+            collection you've spent years building costs nothing.
+          </p>
+        </div>
+        <div class="feature reveal">
+          <h3>No subscription</h3>
+          <p>
+            One payment and that's it. No yearly renewal, and no features held
+            back behind one.
+          </p>
+        </div>
+        <div class="feature reveal">
+          <h3>Nothing is locked in</h3>
+          <p>
+            Export the whole collection to a file whenever you want, photographs
+            and all — to back it up, move it, or take it elsewhere.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ IMPORT ============================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--accent">Import</p>
+        <h2>Save a recipe while you're browsing</h2>
+        <p>
+          Tap Share in Safari, choose Foodie, and it's in your collection —
+          ingredients, method, photograph and timings. The blog post, the pop-ups
+          and the adverts stay behind.
+        </p>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="stat__value">95.3%</div>
+          <p class="stat__label">of recipe pages we tried could be read</p>
+        </div>
+        <div class="stat">
+          <div class="stat__value">92.9%</div>
+          <p class="stat__label">came in complete, ingredients and method</p>
+        </div>
+        <div class="stat">
+          <div class="stat__value">100%</div>
+          <p class="stat__label">of them brought their photo along too</p>
+        </div>
+        <div class="stat">
+          <div class="stat__value">50</div>
+          <p class="stat__label">recipe sites we tested it against</p>
+        </div>
+      </div>
+
+      <div class="features reveal" style="margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);">
+        <div class="feature">
+          <h3>Works on sites that block other apps</h3>
+          <p>
+            Foodie reads the page already open in front of you, so sites that
+            turn other recipe apps away still work here.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Old sites as well as new</h3>
+          <p>
+            Recipe sites label their pages two different ways, and most apps read
+            only the newer one. Foodie reads both, so the likes of Nigella and
+            Delia come in cleanly.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>The photograph comes too</h3>
+          <p>
+            The picture arrives with the recipe instead of a grey square, sized
+            down so your collection doesn't balloon.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Never comes away empty-handed</h3>
+          <p>
+            If a page can't be read at all you still get the name, the picture
+            and the link. Foodie keeps those in one place to finish off when it
+            suits you.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Tags worth keeping</h3>
+          <p>
+            Recipe pages often arrive with dozens of tags — one we tested had
+            fifty-five. Foodie keeps the useful few and drops the rest. Tags you
+            add yourself are never limited.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Times and servings come through</h3>
+          <p>
+            Preparation time, cooking time and how many it serves all arrive
+            filled in, however the original page worded them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ COOKING / DETAIL ============================ -->
+  <section class="section section--sunken rule-top">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--accent">The recipe</p>
+        <h2>Cook from a page you can read</h2>
+        <p>
+          The photograph fills the top of the screen. Ingredients and steps are
+          laid out as proper lists, in type you can read from across the bench.
+          Tap a collection or a tag to jump somewhere else.
+        </p>
+      </div>
+
+      <div class="split reveal">
+        <div class="split__body">
+          <h3>The photograph up top</h3>
+          <p>
+            Each recipe opens on its picture, running the full width of the
+            screen. Foodie looks at the photograph and sets the name in black or
+            white to suit it, so the title is legible whether the shot is a dark
+            casserole or a plate of meringues.
+          </p>
+        </div>
+        <figure class="shot">
+          <img src="assets/img/foodie/land-20-detail-darkest-photo.jpg"
+               alt="A Foodie recipe page with a full-width dark food photograph at the top, the recipe title overlaid in white, and ingredients listed below."
+               width="1800" height="1241" loading="lazy" decoding="async">
+          <figcaption>The name stays clear even over the darkest photograph in the collection.</figcaption>
+        </figure>
+      </div>
+
+      <div class="split split--reverse reveal">
+        <div class="split__body">
+          <h3>Everything in its place</h3>
+          <p>
+            Ingredients come out as a list you can tick your way down, and the
+            method as numbered steps — properly numbered, even when the original
+            page could not count straight.
+          </p>
+          <ul class="split__points">
+            <li>Preparation, cooking and total time, servings and your rating, all in one line</li>
+            <li>Collections and tags on the recipe itself, each one tappable</li>
+            <li>As many photographs as you like, and you choose which one shows</li>
+            <li>Send a recipe to a friend as a file they can simply open</li>
+          </ul>
+        </div>
+        <figure class="shot">
+          <img src="assets/img/foodie/land-21-detail-scrolled-past-hero.jpg"
+               alt="The same Foodie recipe scrolled down past the photo, showing a solid navigation bar carrying the recipe title above the ingredients and directions."
+               width="1800" height="1241" loading="lazy" decoding="async">
+          <figcaption>Scroll down and the name follows you to the top of the screen.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ LIBRARY ============================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--accent">Organise</p>
+        <h2>Collections that mean something to you</h2>
+        <p>
+          Group your recipes the way you actually think about them, rather than
+          the one-size-fits-all approach. Tags arrive with the recipe, and
+          search looks inside the ingredients as well as the names.
+        </p>
+      </div>
+
+      <div class="gallery gallery--2 reveal">
+        <figure class="shot">
+          <img src="assets/img/foodie/land-05-search-results.jpg"
+               alt="Foodie's library filtered by a search term, showing matching recipe tiles."
+               width="1800" height="1241" loading="lazy" decoding="async">
+          <figcaption>Search covers ingredients as well as names, so "chorizo" finds the dish you cannot recall the name of.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/foodie/land-04-view-options-menu.jpg"
+               alt="Foodie's View Options menu open over the library, showing sort choices and a tile size control."
+               width="1800" height="1241" loading="lazy" decoding="async">
+          <figcaption>One menu for the lot: what order to show them in, and how big you want the pictures.</figcaption>
+        </figure>
+      </div>
+
+      <div class="features features--3 reveal" style="margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);">
+        <div class="feature">
+          <h3>Collections</h3>
+          <p>
+            Create one, name it, drag it up or down the list, and drop recipes
+            straight in from the grid. A recipe can belong to several at once, and
+            deleting a collection never deletes the recipes inside it.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Tags worth using</h3>
+          <p>
+            Saved recipes arrive with a few sensible tags, and you can add your
+            own. There is a page listing every tag in your collection, so they
+            are a way of finding things rather than a box to fill in and forget.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Ready-made shortcuts</h3>
+          <p>
+            Recently Added, Favourites and Quick Recipes are always there and
+            always up to date. Nothing to set up, nothing to maintain.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Pictures the size you want them</h3>
+          <p>
+            Pinch to make them bigger, exactly as you would in Photos, or use the
+            slider. Foodie remembers what you chose — so if you like them large,
+            they stay large.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Built for the iPad</h3>
+          <p>
+            The big screen is the point: your collections down one side, your
+            recipes across the rest, and everything within reach. It works
+            properly on the iPhone too, rather than being a phone app somebody
+            stretched.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Two chances before anything goes</h3>
+          <p>
+            Foodie asks before it deletes anything, and then offers to put it
+            back. A recipe you typed in years ago may not exist anywhere else in
+            the world, so it is worth being careful with.
+          </p>
+        </div>
+      </div>
+
+      <div class="gallery gallery--3 reveal" style="margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);">
+        <figure class="shot">
+          <img src="assets/img/foodie/land-13-sidebar-edit-mode.jpg"
+               alt="Foodie's sidebar in edit mode with drag handles beside each collection."
+               width="1800" height="1241" loading="lazy" decoding="async">
+          <figcaption>Putting your collections in the order you want them.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/foodie/land-23-detail-collections-sheet.jpg"
+               alt="A sheet over a Foodie recipe showing the collections it belongs to, with tick marks."
+               width="1800" height="1241" loading="lazy" decoding="async">
+          <figcaption>Choosing which collections a recipe belongs to.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/img/foodie/60-undo-offered.jpg"
+               alt="Foodie's library with an undo control offered after a recipe was deleted."
+               width="1400" height="1013" loading="lazy" decoding="async">
+          <figcaption>Deleted something by mistake? Put it straight back.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ EDITOR ============================ -->
+  <section class="section section--sunken rule-top">
+    <div class="wrap">
+      <div class="split split--phone reveal">
+        <div class="split__body">
+          <p class="eyebrow eyebrow--accent">Manage</p>
+          <h3>Write your own</h3>
+          <p>
+            Handwritten cards, family recipes, things you worked out yourself.
+            Type in the name, the ingredients and the method, add a photograph,
+            and it sits alongside everything else. Only the name is required.
+          </p>
+          <p>
+            Cancel discards your changes and nothing else. Unsaved work is never
+            lost by accident.
+          </p>
+          <ul class="split__points">
+            <li>Several photographs per recipe, and you choose the cover</li>
+            <li>Star ratings, to sort and filter by later</li>
+            <li>Preparation time, cooking time and servings</li>
+            <li>Start a recipe inside a collection and it lands there</li>
+          </ul>
+        </div>
+        <figure class="shot">
+          <img src="assets/img/foodie/port-31-editor-new-filled.jpg"
+               alt="Foodie's recipe editor filled in, showing photo, name, times, ingredients and directions fields."
+               width="1100" height="1595" loading="lazy" decoding="async">
+          <figcaption>Writing one out by hand, part-way through.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SYNC & DATA ============================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--accent">Sync</p>
+        <h2>Up to date on every device you own</h2>
+        <p>
+          Your recipes go into your own iCloud account and appear on your iPad and iPhone
+          by themselves. No account to create, nothing to configure — and you can
+          take the whole collection out again whenever you want.
+        </p>
+      </div>
+
+      <div class="features features--3">
+        <div class="feature reveal">
+          <h3>Sync that needs no setting up</h3>
+          <p>
+            Add a recipe on the iPad and it is on the iPhone. No sign-in, no
+            pairing, no switches — and it tells you in plain words when it last
+            backed everything up.
+          </p>
+        </div>
+        <div class="feature reveal">
+          <h3>Works without the internet</h3>
+          <p>
+            Every recipe is on the device itself, so a dropped connection changes
+            nothing. Foodie mentions quietly that it cannot reach iCloud, and
+            catches up when the wi-fi returns.
+          </p>
+        </div>
+        <div class="feature reveal">
+          <h3>Export the whole collection</h3>
+          <p>
+            Everything you have to a single file, photographs included — to keep
+            somewhere safe, or to load back onto another iPad. It reads its own
+            files back in, so the door opens both ways.
+          </p>
+        </div>
+        <div class="feature reveal">
+          <h3>Pass a recipe on</h3>
+          <p>
+            Send one recipe to somebody by email or message. They tap it, and it
+            drops straight into their own collection.
+          </p>
+        </div>
+        <div class="feature reveal">
+          <h3>A way back from a bad day</h3>
+          <p>
+            On the rare day something goes properly wrong, Foodie can reach in,
+            find your recipes and put them back where they belong.
+          </p>
+        </div>
+        <div class="feature reveal">
+          <h3>Undo, and a second chance</h3>
+          <p>
+            Foodie asks before it deletes anything, then offers to put it back
+            afterwards — because a recipe you typed in years ago may not exist
+            anywhere else.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ACCESSIBILITY ============================ -->
+  <section class="section section--sunken rule-top">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--accent">Accessibility</p>
+        <h2>Readable across the kitchen</h2>
+        <p>
+          A recipe is read at arm's length, in poor light, by someone whose hands
+          are busy. Foodie is built for that.
+        </p>
+      </div>
+      <div class="features features--3">
+        <div class="feature reveal">
+          <h3>Turn the text right up</h3>
+          <p>
+            Set the type as large as iPadOS allows and Foodie rearranges to suit
+            — fewer recipes across the screen, names shown in full, nothing
+            running off the edge.
+          </p>
+        </div>
+        <div class="feature reveal">
+          <h3>Dark mode</h3>
+          <p>
+            The whole app in dark tones for cooking at night, with the step
+            numbers and ingredient lists just as clear as they are by day.
+          </p>
+        </div>
+        <div class="feature reveal">
+          <h3>Read aloud, if you would rather</h3>
+          <p>
+            Every part of a recipe can be spoken by VoiceOver — the ingredients,
+            the steps, the times — so you can keep cooking without looking at the
+            screen at all.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ROADMAP ============================ -->
+  <section class="section rule-top">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--accent">On the way</p>
+        <h2>What we're building next</h2>
+        <p>
+          Foodie isn't finished. These are the next things being built, and they
+          arrive as free updates.
+        </p>
+      </div>
+
+      <div class="features features--3">
+
+        <div class="feature reveal">
+          <h3>Cooking mode</h3>
+          <p>
+            One step at a time in big type, with the screen staying awake and
+            your place kept. Tap a time in the method and a timer starts.
+          </p>
+        </div>
+
+        <div class="feature reveal">
+          <h3>Scale a recipe</h3>
+          <p>
+            Change the number of servings and every ingredient follows. Cooking
+            for four when it was written for six stops being mental arithmetic.
+          </p>
+        </div>
+
+        <div class="feature reveal">
+          <h3>Metric and imperial</h3>
+          <p>
+            Convert between cups, grams and ounces as you cook — the thing we
+            already know how to do rather well.
+          </p>
+        </div>
+
+        <div class="feature reveal">
+          <h3>Shopping lists</h3>
+          <p>
+            Send a recipe to a list that merges the duplicates, sorts itself by
+            aisle, and can go straight into Reminders.
+          </p>
+        </div>
+
+        <div class="feature reveal">
+          <h3>Bring your library across</h3>
+          <p>
+            Importers for Paprika and Mela, so switching means moving what you
+            already have rather than starting again.
+          </p>
+        </div>
+
+        <div class="feature reveal">
+          <h3>Scan a cookbook</h3>
+          <p>
+            Photograph a page from a book or open a PDF, and get a recipe you can
+            search, scale and cook from.
+          </p>
+        </div>
+
+      </div>
+
+      <p class="lede reveal" style="margin-top: clamp(2rem, 1.5rem + 2vw, 3rem);">
+        Further out: meal planning, a shared cookbook for the household, notes on
+        what you changed last time, an Apple Watch app, a Mac version, and Siri
+        shortcuts for saving a recipe by voice.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ COMPARISON ============================ -->
+  <section class="section rule-top">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--accent">In context</p>
+        <h2>How recipe apps usually work</h2>
+      </div>
+      <div class="table-scroll reveal">
+        <table>
+          <caption>How each app is sold, as listed on the App Store in August 2026. The free limits for Crouton and Pestle are widely reported rather than published by their makers. Terms change; check the store for current details.</caption>
+          <thead>
+            <tr>
+              <th scope="col">App</th>
+              <th scope="col">How you pay</th>
+              <th scope="col">Free limit</th>
+              <th scope="col">Where it backs up</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><span class="yes">Foodie</span></th>
+              <td>Once</td>
+              <td><strong>No limit</strong></td>
+              <td>Your iCloud account</td>
+            </tr>
+            <tr>
+              <th scope="row">Deglaze</th>
+              <td>Yearly subscription</td>
+              <td>A few saves a week</td>
+              <td>Their computers</td>
+            </tr>
+            <tr>
+              <th scope="row">Pestle</th>
+              <td>Subscription, or once</td>
+              <td>About 15 recipes</td>
+              <td>Their computers</td>
+            </tr>
+            <tr>
+              <th scope="row">Crouton</th>
+              <td>Once, plus a subscription for some parts</td>
+              <td>About 20 recipes</td>
+              <td>Your iCloud account</td>
+            </tr>
+            <tr>
+              <th scope="row">Mela</th>
+              <td>Once, per device type</td>
+              <td>Yes</td>
+              <td>Your iCloud account</td>
+            </tr>
+            <tr>
+              <th scope="row">Paprika 3</th>
+              <td>Once, up front, per device type</td>
+              <td>None</td>
+              <td>Their computers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede reveal" style="margin-top: clamp(1.8rem, 1.4rem + 1.5vw, 2.8rem);">
+        They are all decent apps. The difference is where your recipes live: an
+        app that keeps them on its own computers has a bill arriving every month
+        and passes it on to you. Foodie keeps them on your iPad and in your own
+        iCloud account, so there is no bill to pass on.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ STATUS ============================ -->
+  <section class="section rule-top">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow eyebrow--accent">Availability</p>
+        <h2 style="font-size: var(--step-3); max-width: 18ch; margin-bottom: 1rem;">In development.</h2>
+        <p class="lede" style="margin-bottom: 1.6rem;">
+          Foodie is being finished now, for iPad and iPhone on iOS&nbsp;26, with
+          Mac to follow. If you would like to hear when it lands, write to us.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="mailto:duncan@objective-d.com?subject=Foodie">Email us about Foodie</a>
+          <a class="btn btn--ghost" href="conversion.html">See Conversion <span class="btn__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div>
+      <a class="wordmark" href="index.html">
+        <svg class="wordmark__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><mask id="cdm-b"><rect width="100" height="100" fill="#fff"/><path d="M50 23 A27 27 0 0 0 50 77 Z" fill="#000"/></mask></defs><g mask="url(#cdm-b)"><path class="mark-ink" d="M50 2 A48 48 0 0 0 50 98 Z"/><path class="mark-gold" d="M50 2 A48 48 0 0 1 50 98 Z"/></g></svg>
+        Concept Development
+      </a>
+      <p class="site-footer__legal" style="margin-top: 0.8rem;">
+        Trademarks are the property of their respective owners.
+      </p>
+    </div>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="foodie.html">Foodie</a></li>
+        <li><a href="conversion.html">Conversion</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="mailto:duncan@objective-d.com">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
