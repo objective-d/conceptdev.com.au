@@ -619,6 +619,26 @@ a:hover { text-decoration-color: currentColor; }
 @media (min-width: 700px) { .gallery--2 { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 700px) { .gallery--3 { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1000px) { .gallery--3 { grid-template-columns: repeat(3, 1fr); } }
+/* Tiles: many small shots read as one swatch board rather than a few hero
+   images. Five across so a ten-shot set lands as two full rows. */
+.gallery--tiles {
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.7rem, 0.4rem + 1vw, 1.4rem);
+}
+@media (min-width: 520px) { .gallery--tiles { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .gallery--tiles { grid-template-columns: repeat(5, 1fr); } }
+
+/* The phone radius is drawn for a full-width shot. At tile size the same 30px
+   eats the screen corners, so it scales down with the image. */
+.gallery--tiles .shot--phone img { border-radius: 14px; }
+
+/* A gallery read as one comparison rather than a few separate shots: the
+   captions are labels, so they sit tight under the image and stay short. */
+.gallery--compare figcaption {
+  margin-top: 0.7rem;
+  text-align: center;
+  text-wrap: balance;
+}
 
 /* --- Comparison table ----------------------------------------------------- */
 

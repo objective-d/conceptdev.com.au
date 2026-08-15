@@ -11,14 +11,15 @@ cd ~/Desktop/ConceptDev && python3 -m http.server 8765
 
 | Path | What it is |
 |---|---|
-| `index.html` | The site. Everything live is here. |
-| `foodie.html` | Foodie product page — **parked, not linked from anywhere** |
-| `conversion.html` | Conversion product page — **parked, not linked from anywhere** |
+| `index.html` | The home page |
+| `conversion.html` | Conversion product page — live, linked from the nav, footer and card |
+| `conversion_privacy.html`, `stiction_privacy.html` | Per-app privacy policies |
+| `__foodie.html` | Foodie product page — **parked, not linked from anywhere** |
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
 | `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
-| `assets/img/foodie/` | Screenshots from `~/Desktop/Foodie4/screenshots` |
-| `assets/img/conversion/` | Screenshots from `~/Desktop/Conversion4/Screenshots` |
+| `assets/img/foodie/` | Screenshots from `~/Desktop/code/Projects/Foodie4/screenshots` |
+| `assets/img/conversion/` | One shot per category, named for it — see **Screenshots** below |
 
 ## The mark
 
@@ -86,29 +87,57 @@ easily.
 
 ## Screenshots
 
-`assets/img/foodie/` and `assets/img/conversion/` hold more captures than the
-pages currently use, kept as a swap pool. Sources:
-`~/Desktop/Foodie4/screenshots` and `~/Desktop/Conversion4/Screenshots`.
+`assets/img/foodie/` holds more captures than the (parked) Foodie page uses,
+kept as a swap pool. Source: `~/Desktop/code/Projects/Foodie4/screenshots`.
+
+`assets/img/conversion/` is one shot per category, named for it, all captured in
+the same run so the status bars match: 9:41, full bars, full battery, no carrier
+text — the same override the app's `fastlane/Snapfile` uses for the store. They
+are 257 × 560 JPEGs, sized for the tile gallery rather than full-width display.
+
+To reshoot, build the app from `~/Desktop/code/Projects/Conversion4` for a
+booted simulator and drive it with the launch arguments its UI tests use:
+
+```bash
+xcrun simctl launch <sim> com.conceptdev.Converter -converter.category volume -converter.fromUnit none -converter.toUnit none
+```
+
+`none` falls back to that category's own defaults, which is what a fresh install
+shows. The amount has to be tapped in on the keypad — there is no launch
+argument for it, and the app does not take hardware keyboard input. Apply the
+status bar override *after* launching; launching resets it.
 
 ## Current state
 
-The site is a **single page**. All four apps — Foodie, Conversion, Stiction and
-DarkFrame — appear as cards under a "Coming soon" badge, and none of them links
-to a detail page.
+**Conversion has launched.** It leads the card grid on the home page, has no
+"Coming soon" badge, and links to `conversion.html`, which is also in the header
+nav and the footer. Foodie, Stiction and DarkFrame follow it and are still
+`product-card--soon`.
 
-`foodie.html` and `conversion.html` are complete and still on disk, but nothing
-links to them, so they will not be crawled if the site is published. Re-linking
-either one means restoring its nav entry, its footer entry, and the card's
-`product-card__link`, and dropping `product-card--soon` from that card.
+`conversion.html` is deliberately short: hero, ten small screenshots, three
+numbers, availability. Conversion is a simple app, so the page does not explain
+it at length — the screenshots carry it, one per category, so the range of units
+and the twelve colours are the argument. The earlier long version is in git
+history if any of it is ever wanted back.
+
+There is **no support page**. It was removed deliberately; do not add one back
+without being asked.
+
+`__foodie.html` is complete and still on disk, but nothing links to it, so it
+will not be crawled. Un-parking it means renaming it to `foodie.html`, restoring
+its nav entry, its footer entry, and the card's `product-card__link`, and
+dropping `product-card--soon` from that card.
 
 Contact address is **info@conceptdev.com.au**; the domain is conceptdev.com.au.
 
-## Before this goes live
+## Known gaps
 
+- The App Store needs a support URL, and there is no support page. It will have
+  to be the contact address, or a page written when one is asked for.
 - Foodie's pricing copy ("one-time purchase", "uncapped free tier") describes the
   recommended model from `Foodie4/docs/recipe-manager-research.md`, not something
   the app implements yet.
-- Neither page has an App Store link. Both end on an email call-to-action.
-- The competitor table on `foodie.html` carries an August 2026 date in its
+- The competitor table on `__foodie.html` carries an August 2026 date in its
   caption. Re-check the prices before publishing.
 - `og:image` is not set on any page.
+- `assets/img/foodie/` is 5.4 MB of JPEGs for a page that is not published.
