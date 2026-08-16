@@ -801,21 +801,26 @@ td { color: var(--ink-muted); }
 
 /* --- Reveal on scroll ----------------------------------------------------- */
 
-.reveal {
+/* Gated behind `.js`, which the inline script in each page's head sets before
+   the first paint. Without it — scripting off, the file blocked, the request
+   failed — every target keeps its natural opacity and the page is whole.
+   Hiding content by default and relying on script to bring it back is how a
+   blocked stylesheet-plus-script turns a page into a blank one. */
+.js .reveal {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
-.reveal.is-visible { opacity: 1; transform: none; }
+.js .reveal.is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* Print */
 @media print {
-  .site-header, .btn-row, .reveal { position: static; opacity: 1; transform: none; }
+  .site-header, .btn-row, .js .reveal { position: static; opacity: 1; transform: none; }
   body { background: #fff; color: #000; }
 }
