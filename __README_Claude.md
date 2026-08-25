@@ -4,8 +4,12 @@ Static site. No build step, no dependencies, no framework. Open `index.html` in 
 browser, or serve the folder:
 
 ```bash
-cd ~/Desktop/ConceptDev && python3 -m http.server 8765
+cd ~/Desktop/code/Projects/conceptdev.com.au && python3 -m http.server 8765
 ```
+
+⚠️ **The path above used to read `~/Desktop/ConceptDev`, which does not exist.**
+That server is also single-threaded, which is fine for reading a page by hand and
+not fine for screenshotting one — see **Sharp edges**.
 
 ## Files
 
@@ -13,13 +17,15 @@ cd ~/Desktop/ConceptDev && python3 -m http.server 8765
 |---|---|
 | `index.html` | The home page |
 | `conversion.html` | Conversion product page — live, linked from the nav, footer and card |
-| `conversion_privacy.html`, `stiction_privacy.html` | Per-app privacy policies |
+| `mojo.html` | Mojo product page — live, linked from the nav, footer and card |
+| `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html` | Per-app privacy policies |
 | `__foodie.html` | Foodie product page — **parked, not linked from anywhere** |
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
 | `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
 | `assets/img/foodie/` | Screenshots from `~/Desktop/code/Projects/Foodie4/screenshots` |
 | `assets/img/conversion/` | One shot per category, named for it — see **Screenshots** below |
+| `assets/img/mojo/` | Nine Mac window captures, numbered in page order — see **Screenshots** below |
 
 ## The mark
 
@@ -95,7 +101,18 @@ the same run so the status bars match: 9:41, full bars, full battery, no carrier
 text — the same override the app's `fastlane/Snapfile` uses for the store. They
 are 257 × 560 JPEGs, sized for the tile gallery rather than full-width display.
 
-To reshoot, build the app from `~/Desktop/code/Projects/Conversion4` for a
+`assets/img/mojo/` is nine captures of the Mac app, numbered in the order they
+appear on the page. **Duncan took them; there is no capture script.** They are
+full-resolution PNGs with the window's own rounded corners and a transparent
+surround, which is what `.shot--mac` is drawn for — it removes the border and
+background the base rule adds and uses `drop-shadow`, which follows the alpha
+rather than the border box.
+
+They come in at nine different aspect ratios, from 714 × 1488 to 3224 × 2074.
+The page does not fight that: each one is centred on a panel of a fixed shape.
+Replacing a shot needs no CSS change as long as it keeps a transparent surround.
+
+To reshoot Conversion, build the app from `~/Desktop/code/Projects/Conversion4` for a
 booted simulator and drive it with the launch arguments its UI tests use:
 
 ```bash
@@ -109,10 +126,22 @@ status bar override *after* launching; launching resets it.
 
 ## Current state
 
-**Conversion has launched.** It leads the card grid on the home page, has no
+**Mojo has a page**, added 2026-08-25. It leads the card grid on the home page,
+is first in the header nav and the footer, and has no "Coming soon" badge — a
+deliberate choice, and the one thing to re-check if Mojo is not on sale yet.
+
+`mojo.html` is nine screenshots with the words under each one, two to a row, the
+lead shot full width and the two portrait captures sharing an upright row. It was
+side-by-side text and image down a single column first, which made a page that
+was thin and very tall; the two-up grid is the fix and should not be undone
+without a reason. Clicking a shot opens it full size (see `.lightbox` in
+`site.js`); the two menu captures carry `shot--nozoom` because they are already
+full size.
+
+**Conversion has launched.** It sits second in the card grid, behind Mojo, has no
 "Coming soon" badge, and links to `conversion.html`, which is also in the header
-nav and the footer. Foodie, Stiction and DarkFrame follow it and are still
-`product-card--soon`.
+nav and the footer. Foodie, Stiction and DarkFrame follow the two of them and are
+still `product-card--soon`.
 
 `conversion.html` is deliberately short: hero, ten small screenshots, three
 numbers, availability. Conversion is a simple app, so the page does not explain
@@ -130,6 +159,27 @@ dropping `product-card--soon` from that card.
 
 Contact address is **info@conceptdev.com.au**; the domain is conceptdev.com.au.
 
+## Sharp edges
+
+Three things that cost time on 2026-08-25 and will cost it again:
+
+- **`python3 -m http.server` is single-threaded.** Pointing headless Chrome at it
+  and taking a screenshot silently produced a page with every image missing —
+  the boxes were the right size, from the `width`/`height` attributes, and
+  nothing was painted in them. It looks exactly like a CSS bug and is not. Serve
+  with `ThreadingHTTPServer`, and pass a generous `--virtual-time-budget`.
+- **The browser caches `site.css` and `site.js` hard.** Reloading a preview after
+  an edit re-fetches the HTML and keeps the old CSS, so a change appears not to
+  have worked. Append `?v=<something>` to both links while previewing, and take
+  it off before committing.
+- **Do not size a panel and fit the image to it.** `aspect-ratio` on the figure
+  with `height: 100%` on the image inside is circular — the image's own height
+  feeds back into the panel's, and depending on which way the browser resolves it
+  either a tall capture pushes its panel past its neighbour's or the image
+  collapses to nothing. Put the `aspect-ratio` on the **image** and let the panel
+  take its height from that. This is why `.point .shot img` carries the ratio and
+  `.point .shot` carries only padding.
+
 ## Known gaps
 
 - The App Store needs a support URL, and there is no support page. It will have
@@ -140,4 +190,8 @@ Contact address is **info@conceptdev.com.au**; the domain is conceptdev.com.au.
 - The competitor table on `__foodie.html` carries an August 2026 date in its
   caption. Re-check the prices before publishing.
 - `og:image` is not set on any page.
+- **`assets/img/mojo/` is 6.7 MB of PNGs**, the largest 1.7 MB. Everything below
+  the lead shot is `loading="lazy"`, so the first paint is not 6.7 MB, but the
+  page is still far heavier than any other. Downsampling to the widths actually
+  displayed, or moving to WebP, is the obvious fix and has not been done.
 - `assets/img/foodie/` is 5.4 MB of JPEGs for a page that is not published.
