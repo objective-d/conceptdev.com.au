@@ -76,3 +76,68 @@
 
   window.addEventListener('scroll', sweep, { passive: true });
 }());
+
+/* --- Lightbox ------------------------------------------------------------- */
+
+/* Click a screenshot to see it full size. Built here rather than in the markup
+   so a page with this file blocked keeps plain, working images. */
+(function () {
+  'use strict';
+
+  /* `shot--nozoom` opts a shot out: some captures are already full size, so a
+     larger view of them shows nothing more. */
+  var shots = [].slice.call(document.querySelectorAll('main .shot:not(.shot--nozoom) img'));
+  if (!shots.length) return;
+
+  var box = document.createElement('div');
+  box.className = 'lightbox';
+  box.hidden = true;
+  box.setAttribute('role', 'dialog');
+  box.setAttribute('aria-modal', 'true');
+  box.innerHTML =
+    '<button type="button" class="lightbox__close" aria-label="Close">×</button><img alt="">';
+  document.body.appendChild(box);
+
+  var big = box.querySelector('img');
+  var closeBtn = box.querySelector('.lightbox__close');
+  var opener = null;
+
+  var open = function (img, btn) {
+    opener = btn;
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt;
+    box.hidden = false;
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  };
+
+  var shut = function () {
+    if (box.hidden) return;
+    box.hidden = true;
+    big.removeAttribute('src');
+    document.body.style.overflow = '';
+    if (opener) opener.focus();
+  };
+
+  shots.forEach(function (img) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'shot__zoom';
+    btn.setAttribute('aria-label', 'View larger: ' + (img.alt || 'screenshot'));
+    img.parentNode.insertBefore(btn, img);
+    btn.appendChild(img);
+    btn.addEventListener('click', function () { open(img, btn); });
+  });
+
+  /* Anywhere but the image itself closes it, which covers the backdrop and
+     the close button in one. */
+  box.addEventListener('click', function (e) { if (e.target !== big) shut(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (box.hidden) return;
+    if (e.key === 'Escape') { shut(); return; }
+    /* The close button is the only stop while the dialog is up, so Tab holds
+       focus there rather than wandering into the page behind it. */
+    if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); }
+  });
+}());

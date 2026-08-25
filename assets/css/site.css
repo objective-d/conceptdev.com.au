@@ -59,6 +59,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   --accent-conversion: #0f5c66;   /* teal, darkened for text  — 7.1:1 */
   --accent-stiction:   #2f6b1e;   /* neon green, darkened for text — 5.8:1 */
   --accent-darkframe:  #8a5a0f;   /* icon amber, darkened for text — 5.6:1 */
+  --accent-mojo:       #5b4bd6;   /* the icon's indigo — 5.9:1 */
 
   /* Type scale — fluid */
   --step--1: clamp(0.83rem, 0.80rem + 0.15vw, 0.92rem);
@@ -102,6 +103,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
     --accent-conversion: #5fd3e0;
     --accent-stiction:   #8fef6b;
     --accent-darkframe:  #e8bc6a;
+    --accent-mojo:       #a497ff;
   }
 }
 
@@ -570,7 +572,95 @@ a:hover { text-decoration-color: currentColor; }
   border-width: 1px;
 }
 
+/* A captured Mac window arrives with its own rounded corners and a transparent
+   surround, so the border and background the base rule adds would draw a box
+   behind them. `drop-shadow` follows the alpha instead of the border box, which
+   is what puts the shadow under the window's actual shape. */
+.shot--mac img {
+  border: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  filter: drop-shadow(0 1px 2px rgba(16, 16, 22, 0.10))
+          drop-shadow(0 14px 34px rgba(16, 16, 22, 0.16));
+}
+
+@media (prefers-color-scheme: dark) {
+  .shot--mac img {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6))
+            drop-shadow(0 14px 34px rgba(0, 0, 0, 0.5));
+  }
+}
+
 .shot-hero { margin-top: clamp(2rem, 1rem + 4vw, 4rem); }
+
+/* A copy point: the screenshot on top, the words under it. Side by side down a
+   single column, nine shots make a page that is thin and very tall, so they go
+   two to a row instead, and the lead shot takes the full width. */
+.points {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.75rem, 2rem + 2.5vw, 4rem) clamp(1.5rem, 0.9rem + 2.5vw, 3rem);
+}
+
+@media (min-width: 820px) {
+  .points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .points > .point--wide { grid-column: 1 / -1; }
+}
+
+.point {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+/* The nine captures arrive at nine different shapes and sizes. Each one is
+   given a panel of a fixed shape to sit on, which is what levels the rows:
+   both panels in a row are the same height, and the words under every shot sit
+   the same distance below it.
+
+   The shape is set on the IMAGE, not the panel, and the panel takes its height
+   from that. Sizing the panel and fitting the image to it reads the same way
+   round but is not: the image's own height then feeds back into the panel's,
+   and the pair collapses. */
+.point .shot {
+  padding: clamp(1rem, 0.5rem + 1.8vw, 2.25rem);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background: var(--bg-sunken);
+}
+
+/* The panel has to stay off the section's own colour to read as a panel. */
+.section--sunken .point .shot { background: var(--bg); }
+
+.point .shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+/* Two portrait captures share a row, so that row gets an upright panel. */
+.point--tall .shot img { aspect-ratio: 4 / 5; }
+
+/* The lead shot is the app itself. It keeps its own shape at full width. */
+.point--wide .shot img { aspect-ratio: auto; }
+
+/* The words are a caption now, not a facing column, so they sit at caption
+   size and start at the panel's left edge. */
+.point__body h3 {
+  font-size: var(--step-1);
+  margin-bottom: 0.35rem;
+  text-wrap: balance;
+}
+.point--wide .point__body h3 { font-size: var(--step-2); }
+
+.point__body p {
+  color: var(--ink-muted);
+  max-width: 46ch;
+}
+.point__body .langs { margin-top: 0.85rem; }
 
 /* Split: text one side, shot the other */
 .split {
@@ -765,13 +855,19 @@ td { color: var(--ink-muted); }
 
 .page-foodie     { --accent-page: var(--accent-foodie); }
 .page-conversion { --accent-page: var(--accent-conversion); }
+.page-mojo       { --accent-page: var(--accent-mojo); }
 .page-foodie .eyebrow--accent     { color: var(--accent-foodie); }
 .page-conversion .eyebrow--accent { color: var(--accent-conversion); }
+.page-mojo .eyebrow--accent       { color: var(--accent-mojo); }
 
 /* App hero header on product pages */
 .app-hero {
   padding-block: clamp(3rem, 2rem + 6vw, 7rem) clamp(2rem, 1.4rem + 3vw, 4rem);
 }
+
+/* The points section opens with its own padding, so the two together left a
+   band of dead space between the pitch and the first shot. */
+.page-mojo .app-hero { padding-bottom: 0; }
 .app-hero__id {
   display: flex;
   align-items: center;
@@ -798,6 +894,75 @@ td { color: var(--ink-muted); }
   font-weight: 620;
   margin-bottom: 1.4rem;
 }
+
+
+/* --- Lightbox ------------------------------------------------------------- */
+
+/* Script wraps each shot in this button so it can be opened full size. Without
+   script there is no button and no wrapper — the image is simply an image. */
+.shot__zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.shot__zoom:focus-visible {
+  outline: 2px solid var(--accent-page, var(--accent));
+  outline-offset: 8px;
+  border-radius: var(--radius);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 0.4rem + 3vw, 3.5rem);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: saturate(160%) blur(22px);
+  -webkit-backdrop-filter: saturate(160%) blur(22px);
+  cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: default;
+  filter: drop-shadow(0 2px 6px rgba(16, 16, 22, 0.18))
+          drop-shadow(0 24px 60px rgba(16, 16, 22, 0.28));
+}
+
+@media (prefers-color-scheme: dark) {
+  .lightbox img {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7))
+            drop-shadow(0 24px 60px rgba(0, 0, 0, 0.6));
+  }
+}
+
+.lightbox__close {
+  position: absolute;
+  top: clamp(0.7rem, 0.3rem + 1.5vw, 1.6rem);
+  right: clamp(0.7rem, 0.3rem + 1.5vw, 1.6rem);
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  cursor: pointer;
+}
+.lightbox__close:hover { background: var(--bg-sunken); }
 
 /* --- Reveal on scroll ----------------------------------------------------- */
 
