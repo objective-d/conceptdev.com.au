@@ -39,7 +39,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* --- Tokens --------------------------------------------------------------- */
 
 :root {
-  /* Neutrals — light */
+  /* Neutrals — light. The site is light whatever the system is set to; there
+     is no dark palette. The dark one is in git history. */
   --bg:          #fbfbfa;
   --bg-raised:   #ffffff;
   --bg-sunken:   #f2f2f0;
@@ -81,30 +82,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
           "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
           "Liberation Mono", monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:          #0d0d10;
-    --bg-raised:   #17171c;
-    --bg-sunken:   #121216;
-    --ink:         #f2f2f4;
-    --ink-muted:   #a8a8b3;
-    --ink-faint:   #77777f;
-    --rule:        rgba(255, 255, 255, 0.12);
-    --rule-strong: rgba(255, 255, 255, 0.22);
-    --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.35);
-    --shadow-lg:   0 2px 6px rgba(0, 0, 0, 0.5), 0 24px 60px rgba(0, 0, 0, 0.55);
-
-    --accent:            #cbb765;   /* 9.6:1 on --bg */
-    --accent-ink:        #0d0d10;
-    --gold:              #c9b45c;
-    --accent-foodie:     #ff9a6b;
-    --accent-conversion: #5fd3e0;
-    --accent-stiction:   #8fef6b;
-    --accent-darkframe:  #e8bc6a;
-    --accent-mojo:       #a497ff;
-  }
 }
 
 @media (prefers-contrast: more) {
@@ -561,12 +538,6 @@ a:hover { text-decoration-color: currentColor; }
   line-height: 1.45;
 }
 
-@media (prefers-color-scheme: dark) {
-  .shot img {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 10px 28px rgba(0, 0, 0, 0.45);
-  }
-}
-
 .shot--phone img {
   border-radius: 30px;
   border-width: 1px;
@@ -584,13 +555,6 @@ a:hover { text-decoration-color: currentColor; }
   width: 100%;
   filter: drop-shadow(0 1px 2px rgba(16, 16, 22, 0.10))
           drop-shadow(0 14px 34px rgba(16, 16, 22, 0.16));
-}
-
-@media (prefers-color-scheme: dark) {
-  .shot--mac img {
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6))
-            drop-shadow(0 14px 34px rgba(0, 0, 0, 0.5));
-  }
 }
 
 .shot-hero { margin-top: clamp(2rem, 1rem + 4vw, 4rem); }
@@ -717,6 +681,9 @@ a:hover { text-decoration-color: currentColor; }
 }
 @media (min-width: 520px) { .gallery--tiles { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 900px) { .gallery--tiles { grid-template-columns: repeat(5, 1fr); } }
+/* Same board, four across, so an eight-shot set lands as two full rows.
+   After the tiles rule above, which it overrides. */
+@media (min-width: 900px) { .gallery--4 { grid-template-columns: repeat(4, 1fr); } }
 
 /* The phone radius is drawn for a full-width shot. At tile size the same 30px
    eats the screen corners, so it scales down with the image. */
@@ -849,16 +816,17 @@ td { color: var(--ink-muted); }
 }
 .site-footer a { text-decoration: none; color: var(--ink-muted); }
 .site-footer a:hover { color: var(--ink); }
-.site-footer__legal { max-width: 34ch; line-height: 1.5; }
 
 /* --- Page accent theming -------------------------------------------------- */
 
 .page-foodie     { --accent-page: var(--accent-foodie); }
 .page-conversion { --accent-page: var(--accent-conversion); }
 .page-mojo       { --accent-page: var(--accent-mojo); }
+.page-stiction   { --accent-page: var(--accent-stiction); }
 .page-foodie .eyebrow--accent     { color: var(--accent-foodie); }
 .page-conversion .eyebrow--accent { color: var(--accent-conversion); }
 .page-mojo .eyebrow--accent       { color: var(--accent-mojo); }
+.page-stiction .eyebrow--accent   { color: var(--accent-stiction); }
 
 /* App hero header on product pages */
 .app-hero {
@@ -939,13 +907,6 @@ td { color: var(--ink-muted); }
           drop-shadow(0 24px 60px rgba(16, 16, 22, 0.28));
 }
 
-@media (prefers-color-scheme: dark) {
-  .lightbox img {
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7))
-            drop-shadow(0 24px 60px rgba(0, 0, 0, 0.6));
-  }
-}
-
 .lightbox__close {
   position: absolute;
   top: clamp(0.7rem, 0.3rem + 1.5vw, 1.6rem);
@@ -989,3 +950,243 @@ td { color: var(--ink-muted); }
   .site-header, .btn-row, .js .reveal { position: static; opacity: 1; transform: none; }
   body { background: #fff; color: #000; }
 }
+
+/* --- Nav call to action --------------------------------------------------- */
+
+/* One nav item is the action, so it takes the button's shape. The rest stay
+   plain text — three pills in a row would read as three equal choices. */
+.nav__cta {
+  background: var(--ink);
+  color: var(--bg) !important;
+  border-radius: 100px;
+  padding: 0.55em 1.1em;
+  font-weight: 560;
+  transition: opacity 0.2s ease;
+}
+.nav__cta:hover { opacity: 0.86; }
+
+@media (max-width: 460px) {
+  /* At mark-only width the row is tight enough without the extra padding. */
+  .nav__cta { padding: 0.4em 0.8em; }
+}
+
+/* --- Stage hero ----------------------------------------------------------- */
+
+/* The home page hero: the headline centred over a wash of light, with the
+   product sitting in it. */
+.hero--stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(3rem, 1.5rem + 7vw, 7rem) 0;
+}
+
+/* The light source. Sized in vw so it stays a wash behind the headline rather
+   than a visible disc, and pinned behind everything by z-index. */
+.hero--stage::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -30vw;
+  z-index: -1;
+  width: 140vw;
+  height: 100vw;
+  max-height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(50% 55% at 50% 50%,
+              color-mix(in srgb, var(--accent-mojo) 9%, transparent),
+              transparent 70%);
+  pointer-events: none;
+}
+
+.hero--stage__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1rem, 0.7rem + 1.2vw, 1.6rem);
+}
+
+/* The h1 and lede are left-aligned and width-capped above; centred here, so
+   both caps are re-cut for a centred measure. */
+.hero--stage h1 {
+  font-size: var(--step-4);
+  max-width: 17ch;
+  margin-bottom: 0;
+}
+.hero--stage p { max-width: 52ch; }
+.hero--stage .btn-row {
+  justify-content: center;
+  margin-top: clamp(0.6rem, 0.3rem + 1vw, 1.2rem);
+}
+
+/* --- Hero shot ------------------------------------------------------------ */
+
+.hero-shot {
+  margin-top: clamp(2.5rem, 1.5rem + 5vw, 5rem);
+  margin-bottom: clamp(3rem, 2rem + 5vw, 7rem);
+}
+
+/* The lead shot sits deeper than the shots down a product page, so it carries
+   a heavier pair of its own. No coloured halo: on paper it needs an edge. */
+.hero-shot img {
+  filter: drop-shadow(0 1px 2px rgba(16, 16, 22, 0.10))
+          drop-shadow(0 18px 44px rgba(16, 16, 22, 0.18));
+}
+
+/* A Mac window is wide, and on a phone every pixel of it counts: the shot
+   takes back the wrap's gutter so it runs edge to edge. Even then it is a
+   glimpse rather than something to read, which is the point of it here. */
+@media (max-width: 700px) {
+  .hero-shot { margin-inline: calc(var(--gutter) * -1); }
+}
+
+/* --- Shelf ---------------------------------------------------------------- */
+
+.shelf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 0.7rem + 1.2vw, 1.25rem);
+}
+@media (min-width: 720px) {
+  .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1040px) {
+  .shelf { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.shelf-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.3s cubic-bezier(0.3, 1.2, 0.5, 1),
+              border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* The accent arrives as a wash from the top-left corner, not a border colour:
+   five saturated outlines in a grid fight each other. */
+.shelf-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(155deg,
+              color-mix(in srgb, var(--card-accent, var(--accent)) 13%, transparent),
+              transparent 62%);
+  opacity: 0.55;
+  transition: opacity 0.4s ease;
+}
+
+.shelf-card:hover,
+.shelf-card:focus-within {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--card-accent, var(--accent)) 40%, var(--rule));
+  box-shadow: var(--shadow-lg);
+}
+.shelf-card:hover::after,
+.shelf-card:focus-within::after { opacity: 1; }
+
+/* Nothing to click, so no lift and no pointer affordance. */
+.shelf-card--soon:hover,
+.shelf-card--soon:focus-within {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--rule);
+}
+.shelf-card--soon:hover::after { opacity: 0.55; }
+
+.shelf-card__icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  flex: none;
+}
+
+.shelf-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.shelf-card__title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.shelf-card h3 { font-size: var(--step-2); }
+
+.shelf-card__kind {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--ink-faint));
+}
+.shelf-card p { color: var(--ink-muted); }
+
+.shelf-card__list {
+  margin-top: 0.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.shelf-card__list li {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  padding: 0.3em 0.8em;
+}
+
+.shelf-card__link {
+  margin-top: auto;
+  padding-top: 1.2rem;
+  font-weight: 560;
+  font-size: var(--step--1);
+  color: var(--card-accent, var(--accent));
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+}
+.shelf-card__link::after {
+  content: "→";
+  transition: transform 0.25s ease;
+}
+.shelf-card:hover .shelf-card__link::after { transform: translateX(4px); }
+/* Whole card clickable, link text stays the accessible name. */
+.shelf-card__link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* --- Contact -------------------------------------------------------------- */
+
+.cta--split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2.5rem;
+}
+.cta--split .btn-row { margin-top: 0; }
+
+/* The one gold thing on the page, kept for the single action that matters. */
+.btn--gold {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.btn--gold:hover { opacity: 0.88; }

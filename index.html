@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Concept Development — apps for iPhone, iPad and Mac</title>
 <meta name="description" content="A small studio on Sydney's Northern Beaches, specialising in Apple technology. Makers of Foodie, a recipe manager, and Conversion, a unit converter.">
-<meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0d0d10" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fbfbfa">
 <meta property="og:title" content="Concept Development">
 <meta property="og:description" content="A small studio on Sydney's Northern Beaches, specialising in Apple technology.">
 <meta property="og:type" content="website">
@@ -27,10 +26,8 @@
       Concept&nbsp;Development
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="mojo.html">Mojo</a>
-      <a href="conversion.html">Conversion</a>
       <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a class="nav__cta" href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -38,17 +35,24 @@
 <main id="main">
 
   <!-- ============================ HERO ============================ -->
-  <section class="hero">
-    <div class="wrap">
+  <section class="hero hero--stage">
+    <div class="wrap hero--stage__inner">
       <h1>Down to the last pixel.</h1>
       <p>
         We are a small studio on Sydney's Northern Beaches. For over 18 years we've been building apps for ourselves and our
-        friends — and we hope you like them too. 
+        friends — and we hope you like them too.
       </p>
       <div class="btn-row">
         <a class="btn btn--primary" href="#apps">See the apps <span class="btn__arrow" aria-hidden="true">→</span></a>
         <a class="btn btn--ghost" href="#about">About us</a>
       </div>
+    </div>
+
+    <div class="wrap">
+      <figure class="shot shot--mac hero-shot">
+        <img src="assets/img/mojo/01-native.png" alt="Mojo in dark mode."
+             width="2708" height="1874" loading="eager" decoding="async" fetchpriority="high">
+      </figure>
     </div>
   </section>
 
@@ -60,101 +64,99 @@
         <h2>What we make.</h2>
       </div>
 
-      <div class="products">
-
-        <article class="product-card reveal" style="--card-accent: var(--accent-mojo);">
-          <div class="product-card__head">
-            <img class="product-card__icon" src="assets/img/icons/mojo.png" alt="" width="62" height="62">
-            <div>
-              <h3>Mojo</h3>
-              <p class="product-card__kind">Simple, yet powerful markdown</p>
-            </div>
-            <span class="badge">Coming soon</span>
-          </div>
-          <p>
-            An elegant, modern Markdown editor and viewer for the Mac.
-            Quicklook support, Syntax highlighting, over 20 kinds of diagram, typeset mathematics and more.
-          </p>
-          <ul class="product-card__list">
-            <li>Mac</li>
-            <li>Quick Look plugin</li>
-            <li>Exports PDF, Word, HTML</li>
-          </ul>
-          <a class="product-card__link" href="mojo.html">See Mojo</a>
-        </article>
-
-        <article class="product-card reveal" style="--card-accent: var(--accent-conversion);">
-          <div class="product-card__head">
-            <img class="product-card__icon" src="assets/img/icons/conversion.png" alt="" width="62" height="62">
-            <div>
+      <div class="shelf">
+        <article class="shelf-card reveal" style="--card-accent: var(--accent-conversion);">
+          <img class="shelf-card__icon" src="assets/img/icons/conversion.png" alt="" width="62" height="62">
+          <div class="shelf-card__body">
+            <div class="shelf-card__title">
               <h3>Conversion</h3>
-              <p class="product-card__kind">It converts — simple!</p>
             </div>
+            <p class="shelf-card__kind">It converts — simple!</p>
+            <p>
+              Any unit, any currency. Metres to feet, cups to millilitres, pounds
+              to euros at today's rate. Ninety-five units across twelve
+              categories, localised into 35 languages.
+            </p>
+            <ul class="shelf-card__list">
+              <li>iPhone &amp; iPad</li>
+              <li>166 currencies</li>
+              <li>Works offline</li>
+            </ul>
+            <a class="shelf-card__link" href="conversion.html">See Conversion</a>
           </div>
-          <p>
-            Any unit, any currency. Metres to feet, cups to millilitres, pounds
-            to euros at today's rate. Ninety-five units across twelve
-            categories, localised into 35 languages.
-          </p>
-          <ul class="product-card__list">
-            <li>iPhone &amp; iPad</li>
-            <li>166 currencies</li>
-            <li>Works offline</li>
-          </ul>
-          <a class="product-card__link" href="conversion.html">See Conversion</a>
         </article>
 
-        <article class="product-card product-card--soon reveal" style="--card-accent: var(--accent-foodie);">
-          <div class="product-card__head">
-            <img class="product-card__icon" src="assets/img/icons/foodie.png" alt="" width="62" height="62">
-            <div>
-              <h3>Foodie</h3>
-              <p class="product-card__kind">Effortless recipe management</p>
-            </div>
-            <span class="badge">Coming soon</span>
-          </div>
-          <p>
-            All the bells, and all the whistles too. Manage your own recipes or
-            import from any website with a couple of taps. Powerful search,
-            collections and tags — and a recipe page you can read from across
-            the kitchen.
-          </p>
-          <ul class="product-card__list">
-            <li>iPad &amp; iPhone</li>
-            <li>Save from Safari</li>
-            <li>iCloud backup</li>
-            <li>No subscription</li>
-          </ul>
-        </article>
-
-        <article class="product-card product-card--soon reveal" style="--card-accent: var(--accent-stiction);">
-          <div class="product-card__head">
-            <img class="product-card__icon" src="assets/img/icons/stiction.png" alt="" width="62" height="62">
-            <div>
+        <article class="shelf-card reveal" style="--card-accent: var(--accent-stiction);">
+          <img class="shelf-card__icon" src="assets/img/icons/stiction.png" alt="" width="62" height="62">
+          <div class="shelf-card__body">
+            <div class="shelf-card__title">
               <h3>Stiction</h3>
-              <p class="product-card__kind">One tap. Ten levels.</p>
             </div>
-            <span class="badge">Coming soon</span>
+            <p class="shelf-card__kind">One tap. Ten levels.</p>
+            <p>
+              A one-tap arcade game where timing is everything.
+            </p>
+            <a class="shelf-card__link" href="stiction.html">See Stiction</a>
           </div>
-          <p>
-            A one-tap arcade game where timing is everything.
-          </p>
         </article>
 
-        <article class="product-card product-card--soon reveal" style="--card-accent: var(--accent-darkframe);">
-          <div class="product-card__head">
-            <img class="product-card__icon" src="assets/img/icons/darkframe.png" alt="" width="62" height="62">
-            <div>
+        <article class="shelf-card reveal" style="--card-accent: var(--accent-mojo);">
+          <img class="shelf-card__icon" src="assets/img/icons/mojo.png" alt="" width="62" height="62">
+          <div class="shelf-card__body">
+            <div class="shelf-card__title">
+              <h3>Mojo</h3>
+              <span class="badge">Coming soon</span>
+            </div>
+            <p class="shelf-card__kind">Simple, yet powerful markdown</p>
+            <p>
+              An elegant, modern Markdown editor and viewer for the Mac.
+              Quicklook support, Syntax highlighting, over 20 kinds of diagram, typeset mathematics and more.
+            </p>
+            <ul class="shelf-card__list">
+              <li>Mac</li>
+              <li>Quick Look plugin</li>
+              <li>Exports PDF, Word, HTML</li>
+            </ul>
+            <a class="shelf-card__link" href="mojo.html">See Mojo</a>
+          </div>
+        </article>
+
+        <article class="shelf-card shelf-card--soon reveal" style="--card-accent: var(--accent-foodie);">
+          <img class="shelf-card__icon" src="assets/img/icons/foodie.png" alt="" width="62" height="62">
+          <div class="shelf-card__body">
+            <div class="shelf-card__title">
+              <h3>Foodie</h3>
+              <span class="badge">Coming soon</span>
+            </div>
+            <p class="shelf-card__kind">Effortless recipe management</p>
+            <p>
+              All the bells, and all the whistles too. Manage your own recipes or
+              import from any website with a couple of taps. Powerful search,
+              collections and tags — and a recipe page you can read from across
+              the kitchen.
+            </p>
+            <ul class="shelf-card__list">
+              <li>iPad &amp; iPhone</li>
+              <li>Save from Safari</li>
+              <li>iCloud backup</li>
+              <li>No subscription</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="shelf-card shelf-card--soon reveal" style="--card-accent: var(--accent-darkframe);">
+          <img class="shelf-card__icon" src="assets/img/icons/darkframe.png" alt="" width="62" height="62">
+          <div class="shelf-card__body">
+            <div class="shelf-card__title">
               <h3>DarkFrame</h3>
-              <p class="product-card__kind">Astrophotography, planned</p>
+              <span class="badge">Coming soon</span>
             </div>
-            <span class="badge">Coming soon</span>
+            <p class="shelf-card__kind">Astrophotography, planned</p>
+            <p>
+              Something new for dark skies. More to come.
+            </p>
           </div>
-          <p>
-            Something new for dark skies. More to come.
-          </p>
         </article>
-
       </div>
     </div>
   </section>
@@ -191,17 +193,16 @@
 
   <!-- ============================ CONTACT ============================ -->
   <section class="section section--sunken rule-top cta" id="contact">
-    <div class="wrap">
+    <div class="wrap cta--split">
       <div class="reveal">
         <p class="eyebrow">Get in touch</p>
         <h2>Say hello.</h2>
         <p>
-          Questions, bug reports, or something you'd like us to build. We answer
-          our own email.
+          Questions, bug reports, or something you'd like us to build.
         </p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="mailto:info@conceptdev.com.au">info@conceptdev.com.au</a>
-        </div>
+      </div>
+      <div class="btn-row reveal">
+        <a class="btn btn--gold" href="mailto:info@conceptdev.com.au">info@conceptdev.com.au</a>
       </div>
     </div>
   </section>
@@ -215,14 +216,9 @@
         <svg class="wordmark__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><defs><mask id="cdm-b"><rect width="100" height="100" fill="#fff"/><path d="M50 23 A27 27 0 0 0 50 77 Z" fill="#000"/></mask></defs><g mask="url(#cdm-b)"><path class="mark-ink" d="M50 2 A48 48 0 0 0 50 98 Z"/><path class="mark-gold" d="M50 2 A48 48 0 0 1 50 98 Z"/></g></svg>
         Concept Development
       </a>
-      <p class="site-footer__legal" style="margin-top: 0.8rem;">
-        Trademarks are the property of their respective owners.
-      </p>
     </div>
     <nav aria-label="Footer">
       <ul>
-        <li><a href="mojo.html">Mojo</a></li>
-        <li><a href="conversion.html">Conversion</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="mailto:info@conceptdev.com.au">Contact</a></li>
       </ul>
