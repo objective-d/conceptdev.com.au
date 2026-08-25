@@ -126,9 +126,15 @@ status bar override *after* launching; launching resets it.
 
 ## Current state
 
-**Mojo has a page**, added 2026-08-25. It leads the card grid on the home page,
-is first in the header nav and the footer, and has no "Coming soon" badge — a
-deliberate choice, and the one thing to re-check if Mojo is not on sale yet.
+**Mojo has a page**, added 2026-08-25. It leads the card grid on the home page and
+is first in the header nav and the footer. The card carries a **"Coming soon"
+badge** — Duncan's call on 2026-08-25; Mojo is not on sale. Take the badge off when
+it ships.
+
+That card is the one place on the site that is both badged and clickable, and that
+is deliberate: it does **not** carry `product-card--soon`. That modifier exists to
+remove the hover lift from a card with nothing to click, and this card links to
+`mojo.html`, so it keeps its hover.
 
 `mojo.html` is nine screenshots with the words under each one, two to a row, the
 lead shot full width and the two portrait captures sharing an upright row. It was
