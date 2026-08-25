@@ -588,15 +588,27 @@ a:hover { text-decoration-color: currentColor; }
    from that. Sizing the panel and fitting the image to it reads the same way
    round but is not: the image's own height then feeds back into the panel's,
    and the pair collapses. */
-.point .shot {
-  padding: clamp(1rem, 0.5rem + 1.8vw, 2.25rem);
+/* Captures arrive at every shape, size and colour there is, so each one sits
+   on a panel — that is what makes a row of them read as one set rather than a
+   jumble. Every shot gets the same panel, whether it is a lone .point or one
+   tile in a .gallery; only the padding differs, because a gallery tile is a
+   fraction of a point's width. */
+.point .shot,
+.gallery .shot {
   border: 1px solid var(--rule);
   border-radius: var(--radius-lg);
   background: var(--bg-sunken);
 }
+.point .shot   { padding: clamp(1rem, 0.5rem + 1.8vw, 2.25rem); }
+.gallery .shot { padding: clamp(0.6rem, 0.45rem + 0.6vw, 1rem); }
 
 /* The panel has to stay off the section's own colour to read as a panel. */
-.section--sunken .point .shot { background: var(--bg); }
+.section--sunken .point .shot,
+.section--sunken .gallery .shot { background: var(--bg); }
+
+/* Inside a panel the image's own hairline just doubles the panel's, so it
+   goes. The radius and the shadow stay: they are what lift the shot off it. */
+.gallery .shot img { border: 0; }
 
 .point .shot img {
   display: block;
