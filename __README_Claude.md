@@ -232,8 +232,10 @@ All five cards are equal width — an earlier `shelf-card--feature` modifier gav
 Mojo a double-width card and was removed, because Mojo had the least to say and
 the extra space read as a hole.
 
-**Card order is deliberate and is Duncan's call**: Conversion, Stiction, Mojo,
-Foodie, DarkFrame — released apps first. Do not reorder without being asked.
+**Card order follows a rule, set by Duncan on 2026-09-03: released apps first,
+newest release first**, then the unreleased ones. Today that is Mojo, Stiction,
+Conversion, Foodie, DarkFrame. When the next app ships it goes to the front —
+that is the rule, so apply it rather than asking.
 
 `shelf-card--soon` removes the hover lift from a card with nothing to click. It
 is on Foodie and DarkFrame only — the two apps that are not out and have no
