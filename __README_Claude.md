@@ -236,9 +236,8 @@ the extra space read as a hole.
 Foodie, DarkFrame — released apps first. Do not reorder without being asked.
 
 `shelf-card--soon` removes the hover lift from a card with nothing to click. It
-is on Foodie and DarkFrame only. Mojo carries a "Coming soon" badge *and* links
-to `mojo.html`, so it is badged and clickable at once — deliberate, and it does
-not take the modifier.
+is on Foodie and DarkFrame only — the two apps that are not out and have no
+page. No card is both badged and clickable any more.
 
 ⚠️ **`.product-card*` in `site.css` is now dead code.** Nothing in any HTML file
 uses it — the home page moved to `.shelf-card` and `__foodie.html` never used
@@ -253,7 +252,12 @@ without a reason. Clicking a shot opens it full size (see `.lightbox` in
 `site.js`); the two menu captures carry `shot--nozoom` because they are already
 full size.
 
-**Conversion and Stiction have launched**, so neither carries a badge.
+**Conversion, Stiction and Mojo have launched**, so none of them carries a
+badge. Mojo went on sale 2026-09-02 and its "Coming soon" badge came off the
+same day. ⚠️ **`mojo.html` still has no App Store button** — Conversion and
+Stiction both lead their button row with one, Mojo's row is Email us and
+Privacy only, because nobody has supplied its App Store id yet. Conversion is
+`286552073`, Stiction is `6799792974`; Mojo's is unknown.
 
 **Stiction has a page**, added 2026-08-25: `stiction.html`, App Store id
 **6799792974**. Hero, then the eight level shots as `gallery gallery--tiles
