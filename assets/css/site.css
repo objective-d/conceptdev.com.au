@@ -53,14 +53,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
   --shadow-lg:   0 2px 6px rgba(16, 16, 22, 0.06), 0 24px 60px rgba(16, 16, 22, 0.12);
 
   /* Accents — company gold, taken from the mark and darkened until it can carry text */
-  --accent:            #6b5f1c;   /* 5.9:1 on --bg */
-  --accent-ink:        #ffffff;
-  --gold:              #9c8a34;   /* the mark's own gold, for fills only */
-  --accent-foodie:     #9a3412;   /* paprika, darkened for text — 7.4:1 */
-  --accent-conversion: #0f5c66;   /* teal, darkened for text  — 7.1:1 */
-  --accent-stiction:   #2f6b1e;   /* neon green, darkened for text — 5.8:1 */
-  --accent-darkframe:  #8a5a0f;   /* icon amber, darkened for text — 5.6:1 */
-  --accent-mojo:       #5b4bd6;   /* the icon's indigo — 5.9:1 */
+  --accent:              #6b5f1c;   /* 5.9:1 on --bg */
+  --accent-ink:          #ffffff;
+  --gold:                #9c8a34;   /* the mark's own gold, for fills only */
+  --accent-foodie:       #9a3412;   /* paprika, darkened for text — 7.4:1 */
+  --accent-conversion:   #0f5c66;   /* teal, darkened for text  — 7.1:1 */
+  --accent-stiction:     #2f6b1e;   /* neon green, darkened for text — 5.8:1 */
+  --accent-astronomical: #8a5a0f;   /* icon amber, darkened for text — 5.6:1 */
+  --accent-mojo:         #5b4bd6;   /* the icon's indigo — 5.9:1 */
 
   /* Type scale — fluid */
   --step--1: clamp(0.83rem, 0.80rem + 0.15vw, 0.92rem);

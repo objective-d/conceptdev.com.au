@@ -234,11 +234,11 @@ the extra space read as a hole.
 
 **Card order follows a rule, set by Duncan on 2026-09-03: released apps first,
 newest release first**, then the unreleased ones. Today that is Mojo, Stiction,
-Conversion, Foodie, DarkFrame. When the next app ships it goes to the front —
+Conversion, Foodie, Astronomical. When the next app ships it goes to the front —
 that is the rule, so apply it rather than asking.
 
 `shelf-card--soon` removes the hover lift from a card with nothing to click. It
-is on Foodie and DarkFrame only — the two apps that are not out and have no
+is on Foodie and Astronomical only — the two apps that are not out and have no
 page. No card is both badged and clickable any more.
 
 ⚠️ **`.product-card*` in `site.css` is now dead code.** Nothing in any HTML file
