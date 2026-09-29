@@ -93,8 +93,9 @@ curl -s https://conceptdev.com.au/assets/css/site.css | diff - assets/css/site.c
 | `conversion.html` | Conversion product page — live, reachable **only from its card** |
 | `stiction.html` | Stiction product page — live, reachable **only from its card** |
 | `mojo.html` | Mojo product page — live, reachable **only from its card** |
-| `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html` | Per-app privacy policies, each linked from its product page. Standalone: their own inline `<style>`, they do **not** load `site.css` |
-| `__foodie.html` | Foodie product page — **parked, not linked from anywhere** |
+| `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html`, `foodie_privacy.html` | Per-app privacy policies, each linked from its product page. Standalone: their own inline `<style>`, they do **not** load `site.css` |
+| `foodie.html` | **Temporary** Foodie "coming soon" placeholder — live, linked from its card. Loads `site.css`, hero + one availability section, links to `foodie_privacy.html` |
+| `__foodie.html` | The real Foodie product page — **parked**; rename it over `foodie.html` when Foodie ships |
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
 | `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
@@ -286,15 +287,18 @@ There is **no support page**. It was removed deliberately; do not add one back
 without being asked.
 
 `__foodie.html` is complete and still on disk, but nothing links to it, so it
-will not be crawled. ⚠️ The un-parking instructions here used to name
-`product-card__link` and `product-card--soon`; those classes are gone from the
-markup. Un-parking now means renaming it to `foodie.html`, then on the Foodie
-**shelf card** in `index.html`: add an `<a class="shelf-card__link"
-href="foodie.html">` and drop `shelf-card--soon`. There is no nav entry to
-restore — no product is in the nav any more. ⚠️ `__foodie.html` was edited on
-2026-08-25 (nav, `theme-color`, trademarks line) and **has not been opened in a
-browser since**; its two internal links still point at `foodie.html`, which does
-not exist.
+will not be crawled. On 2026-09-30 the home page card was wired up to a
+**temporary** `foodie.html` placeholder instead: the card lost
+`shelf-card--soon` and gained `<a class="shelf-card__link" href="foodie.html">`,
+and it keeps its "Coming soon" badge. There is no nav entry — no product is in
+the nav any more.
+
+Un-parking is now a single move: rename `__foodie.html` over `foodie.html`. The
+card link needs no change, and the real page's two internal `foodie.html` links
+then resolve to itself. ⚠️ `__foodie.html` was edited on 2026-08-25 (nav,
+`theme-color`, trademarks line) and **has not been opened in a browser since**.
+⚠️ It has no link to `foodie_privacy.html` yet — add one to its availability
+button row when un-parking, the way `stiction.html` does.
 
 Contact address is **info@conceptdev.com.au**; the domain is conceptdev.com.au.
 
