@@ -16,50 +16,61 @@ There is a launch config at `.claude/launch.json` (name: `site`, port 8765) for
 
 ## Pick up here
 
-Next steps, highest value first. Nothing is half-built: the tree is clean and
-everything below is a decision or an addition, not a repair.
+Rewritten 2026-10-14, the day the Foodie page went live. The tree is clean and
+everything is pushed; nothing is half-built.
 
-1. **Look at `__foodie.html` and the three privacy pages in a browser.** They
-   are the only pages changed or newly linked on 2026-08-25 that nobody has
-   actually *seen* since. See **Never looked at** below — start there, it is
-   the cheapest way to catch a real bug.
-2. **Stiction availability wording.** `stiction.html` has the buttons but no
-   eyebrow, heading or "what it needs to run" line. Conversion's section is the
-   model. Needs Duncan's words — **do not draft them**, see **Copy** above.
-3. **Decide on `.product-card*` in `site.css`** — ~21 dead references. Delete,
-   or keep as the pattern for un-parking Foodie. A decision, not a bug.
-4. **Downsample `assets/img/mojo/`** (6.8 MB). The Stiction folder is the
-   worked example — format, not dimensions. See **Screenshots**.
-5. **`og:image`** is still unset on every page.
+1. **Delete `__foodie.html` and the 23 pre-release Foodie screenshots.** Duncan
+   agreed on 2026-10-14, but the auto-mode safety check blocked `git rm`, so he
+   was given the command to run himself. If they are still on disk, ask him
+   to run it — do not work around the block:
+   `git rm -q __foodie.html $(ls assets/img/foodie/*.jpg | grep -vE "/(ipad|iphone)-")`
+   No page references any of them (checked). Then drop the `__foodie.html` row
+   from **Files** and the swap-pool sentence under **Screenshots**.
+2. **Look at `foodie.html` at phone width and in the 900–1040px band.** See
+   **Never looked at** — the page was rebuilt several times after its only
+   narrow-width check.
+3. **Stiction availability wording.** `stiction.html` has the buttons but no
+   eyebrow, heading or "what it needs to run" line. Needs Duncan's words —
+   **do not draft them**, see **Copy**.
+4. **Mojo still has no App Store button** — its id is unknown. Ask for it.
+5. **Decide on `.product-card*` in `site.css`** — ~21 dead references. Nothing
+   needs it now that Foodie has its page; deleting is the likely answer.
+6. **Downsample `assets/img/mojo/`** (6.8 MB). See **Screenshots**.
+7. **`og:image`** is still unset on every page.
 
 ## Never looked at
 
-Built, changed or wired up on 2026-08-25 and **not once opened in a browser**.
-None of these is known to be broken; none has been seen either.
+**From 2026-10-14 (the Foodie page):**
 
-- **`__foodie.html`** — edited (nav links removed, `theme-color`, trademarks
-  line) and never rendered. Its two internal links point at `foodie.html`,
-  which does not exist; that predates the session and is expected while parked.
+- **`foodie.html` at phone width.** The *first* version was checked at 375px
+  (no horizontal overflow). It was then rebuilt — new sections, a `features--3`
+  block, a heading-less `.langs` list — and never looked at narrow again.
+- **`foodie.html` between 700 and 1040px.** Only 1280px (and 1024px for the
+  hero gap) was checked.
+- **The home page hero at phone width.** It is now a plain iPad JPEG with a
+  border and radius, and `.hero-shot` takes back the gutter below 700px so it
+  runs edge to edge. That rule was written for the Mojo window with its
+  transparent surround; how the radius and border look edge to edge was not
+  checked. Desktop was checked by `naturalWidth` only (2000 px, shown at
+  1105 px) — the screenshot taken was a stale composite.
+- **The lightbox on Foodie shots** — never clicked.
+- **The "A first-class Apple citizen" section.** Its `.langs` list sits in a
+  `.point__body` with no `h3`, so it keeps `.point__body .langs`'s top margin.
+  Not looked at after the heading moved out.
+- **The four simulator shots sit short in their 4:3 panels** (2420×1668 from an
+  11-inch iPad, beside 4:3 store shots from a 13-inch). Seen once at 1280px and
+  judged acceptable; Duncan approved the page with it.
+
+**From 2026-08-25, still open:**
+
 - **`conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html`** —
-  never opened. `stiction.html` now links to the third one, and only its HTTP
-  status (200) was checked, never its rendering. They carry their own inline
-  `<style>` and do not load `site.css`, so the light switch should not have
-  touched them — **assumed, not verified**.
-- **The lightbox** — the wrapper buttons and their `aria-label`s were confirmed
-  in the DOM, but no screenshot was ever clicked to watch one open. Untouched
-  this session, so low risk.
-- **`mojo.html` and `conversion.html` below the fold** — the tops were checked
-  after the panel change, the bottoms (Mojo's later shots, Conversion's stats
-  and availability block) were not.
-- **`mojo.html` and `conversion.html` at phone width** — `index.html` and
-  `stiction.html` were checked at 390px and had no overflow; these two were not
-  checked at any narrow width after the redesign.
-- **The 900–1040px band** — `gallery--4` and the shelf's two-column step both
-  change there. Verified at 390px and ≥1280px only.
+  never opened; only HTTP 200 checked.
+- **The lightbox** in general — wrapper buttons confirmed in the DOM, never
+  clicked open.
+- **`mojo.html` and `conversion.html` below the fold and at phone width.**
 - **`prefers-contrast: more`, `prefers-reduced-motion`, and the print
-  stylesheet** — all three still have rules and none was exercised. The print
-  block still names `.js .reveal`, which is current, but `.site-footer__legal`
-  was deleted this session, so print is worth one look.
+  stylesheet** — none exercised. `.site-footer__legal` was deleted, so print is
+  worth one look.
 
 ## Checking your work
 
@@ -70,7 +81,7 @@ moves, all of which were used on 2026-08-25:
 
 ```bash
 # 1. every page still serves
-for p in "" mojo.html conversion.html stiction.html; do \
+for p in "" mojo.html conversion.html stiction.html foodie.html; do \
   curl -s -o /dev/null -w "$p %{http_code}\n" "http://localhost:8765/$p"; done
 
 # 2. the live stylesheet matches the local one (see Sharp edges)
@@ -95,11 +106,11 @@ curl -s https://conceptdev.com.au/assets/css/site.css | diff - assets/css/site.c
 | `mojo.html` | Mojo product page — live, reachable **only from its card** |
 | `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html`, `foodie_privacy.html` | Per-app privacy policies, each linked from its product page. Standalone: their own inline `<style>`, they do **not** load `site.css` |
 | `foodie.html` | Foodie product page (live since 2026-10-14). Copy is Duncan's, from the old foodiesharing.com, in its three groups. Mojo-style points for landscape iPad, Conversion tile row for portrait iPhone |
-| `__foodie.html` | The old parked Foodie page — **superseded** by `foodie.html`. Its roadmap and pricing copy are out of date; kept only until Duncan decides to delete it |
+| `__foodie.html` | The old parked Foodie page — **superseded** by `foodie.html`, with wrong copy (roadmap lists shipped features; pricing is not the shipped model). Agreed for deletion — see **Pick up here** |
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
 | `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
-| `assets/img/foodie/` | `ipad-0*.jpg` and `iphone-0*.jpg` are the App Store screenshots from `~/Desktop/Foodie4/fastlane/screenshots/en-AU`. `ipad-scaling/converter/share-menu/dark.jpg` were taken on the Foodie-Dev-iPad simulator, landscape, 2026-10-14. Everything else is pre-release captures, unused |
+| `assets/img/foodie/` | `ipad-0*.jpg` and `iphone-0*.jpg` are the App Store screenshots from `~/Desktop/Foodie4/fastlane/screenshots/en-AU`. `ipad-scaling/converter/share-menu/dark.jpg` were taken on the Foodie-Dev-iPad simulator, landscape, 2026-10-14. Everything else (23 files, ~5 MB) is pre-release captures, unused, agreed for deletion |
 | `assets/img/conversion/` | One shot per category, named for it — see **Screenshots** below |
 | `assets/img/mojo/` | Nine Mac window captures, numbered in page order — see **Screenshots** below |
 | `assets/img/stiction/` | `1.jpg`–`8.jpg`, one per level, in page order — see **Screenshots** below |
@@ -177,8 +188,57 @@ easily.
 
 ## Screenshots
 
-`assets/img/foodie/` holds more captures than the (parked) Foodie page uses,
-kept as a swap pool. Source: `~/Desktop/code/Projects/Foodie4/screenshots`.
+`assets/img/foodie/`: the page uses only the `ipad-*` and `iphone-*` files.
+⚠️ The Foodie project is at **`~/Desktop/Foodie4`**, not
+`~/Desktop/code/Projects/Foodie4` as this used to say. Duncan's rules for these:
+**landscape iPad, portrait iPhone, plain screenshots with no device frame, and
+as few as will do the job.**
+
+- `ipad-01/03/04/05-*.jpg` and `iphone-0*.jpg` are the App Store pictures,
+  `~/Desktop/Foodie4/fastlane/screenshots/en-AU`, scaled to 2000 px (iPad,
+  2752×2064 source) and 603 px wide (iPhone, 1320×2868 source), JPEG q80.
+  They are raw captures with a 9:41 status bar, not framed marketing images.
+  The UI test that makes them is `UITests/AppStoreScreenshots.swift`.
+- `ipad-scaling`, `ipad-converter`, `ipad-share-menu` and `ipad-dark` were
+  taken by hand on 2026-10-14 on the **Foodie-Dev-iPad** simulator (iPad Pro
+  11-inch, iOS 26.5, UDID `719DCBB9-…`), 2420×1668 → 2000×1378. ⚠️ "Foodie-Dev"
+  on its own is an **iPhone 17 Pro**, not the iPad.
+
+To take more by hand, build into a scratch derived-data folder, install, and
+launch with the same switches the UI tests use — a fresh sample library, the
+trial running so Pro features open instead of the paywall, no tips:
+
+```bash
+xcrun simctl launch --terminate-running-process <udid> com.conceptdev.foodie.dev \
+  -com.apple.TipKit.HideAllTips 1 -AppleLanguages "(en-AU)" -AppleLocale en_AU
+# with, in the environment: SIMCTL_CHILD_FOODIE_STORE=ephemeral
+#   SIMCTL_CHILD_FOODIE_SHOPPING=ephemeral SIMCTL_CHILD_FOODIE_RESET_LIBRARY=1
+#   SIMCTL_CHILD_FOODIE_SYNC=0 SIMCTL_CHILD_FOODIE_HIDE_SYNC_FOOTER=1
+#   SIMCTL_CHILD_FOODIE_TRIAL_STARTED_DAYS_AGO=1
+```
+
+Things that cost time:
+
+- **Do not build with `CODE_SIGNING_ALLOWED=NO`.** The app then has no
+  simulated entitlements, fails on its App Group and CloudKit, and dies with
+  SIGTRAP straight after launch — it looks like it never opened. A normal
+  simulator build (`-destination 'generic/platform=iOS Simulator'`) works.
+- **Landscape** is Simulator's *Device → Rotate Left* (scriptable with
+  `osascript` through System Events). There is no `simctl` command for it.
+- **Once rotated, the simulator tool's own screenshot is stale and sideways**,
+  and its taps take **landscape** points (1210×834 on the 11-inch), not the
+  portrait 834×1210 it reports when attaching. Capture with
+  `xcrun simctl io <udid> screenshot` instead — that one is real and the right
+  way up.
+- **Taps during a transition are dropped.** After closing a sheet or opening a
+  recipe, the next tap often does nothing; check, then tap again.
+- **The simulator's share sheet has no AirDrop or Mail**, so it looks bare.
+  The page uses Foodie's own Share Recipe menu (Foodie Recipe / PDF) instead.
+- Dark mode: `xcrun simctl ui <udid> appearance dark` (and back to `light`).
+- Status bar: `xcrun simctl status_bar <udid> override --time 9:41 …`; clear it
+  afterwards. The Foodie-Dev-iPad was left shut down, light, override cleared —
+  ⚠️ but **with this session's debug build of Foodie Dev installed over
+  whatever Duncan had there**, and possibly still rotated left.
 
 `assets/img/conversion/` is one shot per category, named for it, all captured in
 the same run so the status bars match: 9:41, full bars, full battery, no carrier
@@ -235,17 +295,17 @@ Mojo a double-width card and was removed, because Mojo had the least to say and
 the extra space read as a hole.
 
 **Card order follows a rule, set by Duncan on 2026-09-03: released apps first,
-newest release first**, then the unreleased ones. Today that is Mojo, Stiction,
-Conversion, Foodie, Astronomical. When the next app ships it goes to the front —
+newest release first**, then the unreleased ones. Today that is Foodie (shipped
+2026-10-08, page live 2026-10-14), Mojo, Stiction, Conversion, Astronomical. When the next app ships it goes to the front —
 that is the rule, so apply it rather than asking.
 
 `shelf-card--soon` removes the hover lift from a card with nothing to click. It
-is on Foodie and Astronomical only — the two apps that are not out and have no
-page. No card is both badged and clickable any more.
+is on Astronomical only — the one app that is not out and has no page. ⚠️ This
+used to say Foodie too; Foodie lost it on 2026-09-30 and its badge on
+2026-10-14.
 
 ⚠️ **`.product-card*` in `site.css` is now dead code.** Nothing in any HTML file
-uses it — the home page moved to `.shelf-card` and `__foodie.html` never used
-it. About 21 references. It was left in place rather than deleted; see
+uses it — the home page moved to `.shelf-card` and no product page uses it. About 21 references. It was left in place rather than deleted; see
 **Known gaps**.
 
 `mojo.html` is nine screenshots with the words under each one, two to a row, the
@@ -287,19 +347,28 @@ history if any of it is ever wanted back.
 There is **no support page**. It was removed deliberately; do not add one back
 without being asked.
 
-`__foodie.html` is complete and still on disk, but nothing links to it, so it
-will not be crawled. On 2026-09-30 the home page card was wired up to a
-**temporary** `foodie.html` placeholder instead: the card lost
-`shelf-card--soon` and gained `<a class="shelf-card__link" href="foodie.html">`,
-and it keeps its "Coming soon" badge. There is no nav entry — no product is in
-the nav any more.
+**Foodie has a page**, live 2026-10-14: `foodie.html`, App Store id
+**577670082** (an old id — the app dates from 2012; v4.0 is a rewrite). ⚠️ The
+older notes here described `foodie.html` as a temporary placeholder and
+`__foodie.html` as the real page to rename over it. **Both are now false** —
+`foodie.html` was written fresh, and `__foodie.html` is dead.
 
-Un-parking is now a single move: rename `__foodie.html` over `foodie.html`. The
-card link needs no change, and the real page's two internal `foodie.html` links
-then resolve to itself. ⚠️ `__foodie.html` was edited on 2026-08-25 (nav,
-`theme-color`, trademarks line) and **has not been opened in a browser since**.
-⚠️ It has no link to `foodie_privacy.html` yet — add one to its availability
-button row when un-parking, the way `stiction.html` does.
+The copy is **Duncan's own**, from the old foodiesharing.com
+(web.archive.org snapshot 2020-08-11), kept in its three groups — *Your
+recipes*, *Your cooking companion*, *Share with family and friends* — then
+*A first-class Apple citizen* (dark shot + a `.langs` list), *iPhone too!*
+(five iPhone tiles, no captions) and the availability row. Every line was
+reworded only where the app has changed, and every edit after the first draft
+was Duncan's dictation. Treat the wording as his: change it only when asked.
+
+What the app actually is, checked against `~/Desktop/Foodie4` and its App Store
+listing on 2026-10-14: **free download**, iOS 26+, iPhone and iPad, no Mac
+build (`SUPPORTS_MACCATALYST = NO`). **Foodie Pro** is a one-time in-app
+purchase with a 30-day free trial; it covers sharing lists and collections,
+importing from websites, sending lists to Reminders, sending recipes, and
+printing (`Foodie/Pro/ProFeature.swift`). The page no longer mentions Pro at
+all — Duncan cut that line. There is **no "cooking keyboard"** any more; the
+old copy's line about it was replaced.
 
 Contact address is **info@conceptdev.com.au**; the domain is conceptdev.com.au.
 
@@ -333,7 +402,11 @@ Things that cost time and will cost it again:
 - **The browser caches `site.css` and `site.js` hard.** Reloading a preview after
   an edit re-fetches the HTML and keeps the old CSS, so a change appears not to
   have worked. Append `?v=<something>` to both links while previewing, and take
-  it off before committing.
+  it off before committing. ⚠️ **Exception, deliberate:** `foodie.html` links
+  `site.css?v=2`, committed and live. Duncan's browser kept showing old spacing
+  after a Cmd+Shift+R, and the query string was what got it through. The other
+  pages link plain `site.css`. Bump it if a Foodie-only CSS change "does
+  nothing".
   **This bites on the live site too, and looks much worse there.** On
   2026-08-25 Duncan loaded conceptdev.com.au during a Pages deploy, cached a
   `site.css` that had not published yet, and got a page with *no styling at
@@ -354,11 +427,12 @@ Things that cost time and will cost it again:
 
 - The App Store needs a support URL, and there is no support page. It will have
   to be the contact address, or a page written when one is asked for.
-- Foodie's pricing copy ("one-time purchase", "uncapped free tier") describes the
-  recommended model from `Foodie4/docs/recipe-manager-research.md`, not something
-  the app implements yet.
-- The competitor table on `__foodie.html` carries an August 2026 date in its
-  caption. Re-check the prices before publishing.
+- ⚠️ The two Foodie pricing notes that stood here (an unimplemented pricing
+  model, and a competitor table to re-check) were about `__foodie.html` and are
+  moot: the live page states no price and has no table.
+- **"Sync … across all your devices"** on `foodie.html` is Duncan's wording.
+  Today that means iPhone and iPad only — there is no Mac build yet. The page
+  also says "iPhone Duo and Mac version coming soon."
 - `og:image` is not set on any page.
 - **`assets/img/mojo/` is 6.8 MB of PNGs**, the largest 1.7 MB. Everything below
   the lead shot is `loading="lazy"`, so the first paint is not 6.8 MB, but the
@@ -368,12 +442,12 @@ Things that cost time and will cost it again:
   captures have a **transparent surround** that `.shot--mac` depends on, so
   they cannot simply become JPEGs the way Stiction's did — WebP or PNG
   re-compression, not JPEG.
-- `assets/img/foodie/` is 5.4 MB of JPEGs for a page that is not published.
+- `assets/img/foodie/` is 8.5 MB: ~3.5 MB used by the live page, ~5 MB of
+  pre-release captures waiting to be deleted (see **Pick up here**).
 - **`.product-card*` in `site.css` is dead** — ~21 references, no HTML uses it.
   Kept deliberately for now; see **Pick up here**.
 - **No product page links to another product page.** With the apps out of the
   nav, leaving `mojo.html` means going back to the home page first. Duncan's
   call; flagged in case it is not the intent.
-- `.DS_Store` files appear in this folder and are **not** in a `.gitignore` —
-  there is no `.gitignore` at all. They were kept out of the 2026-08-25 commits
-  by staging paths explicitly. Worth adding one.
+- ⚠️ This used to say there is no `.gitignore`. **There is one** and it lists the
+  `.DS_Store` files; nothing to do.
