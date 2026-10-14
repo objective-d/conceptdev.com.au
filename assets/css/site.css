@@ -847,7 +847,9 @@ td { color: var(--ink-muted); }
 
 /* The points section opens with its own padding, so the two together left a
    band of dead space between the pitch and the first shot. */
-.page-mojo .app-hero { padding-bottom: 0; }
+.page-mojo .app-hero,
+.page-foodie .app-hero { padding-bottom: 0; }
+.page-foodie .app-hero + .section { padding-top: clamp(2rem, 1.2rem + 3vw, 4rem); }
 .app-hero__id {
   display: flex;
   align-items: center;

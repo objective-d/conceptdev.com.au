@@ -94,12 +94,12 @@ curl -s https://conceptdev.com.au/assets/css/site.css | diff - assets/css/site.c
 | `stiction.html` | Stiction product page — live, reachable **only from its card** |
 | `mojo.html` | Mojo product page — live, reachable **only from its card** |
 | `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html`, `foodie_privacy.html` | Per-app privacy policies, each linked from its product page. Standalone: their own inline `<style>`, they do **not** load `site.css` |
-| `foodie.html` | **Temporary** Foodie "coming soon" placeholder — live, linked from its card. Loads `site.css`, hero + one availability section, links to `foodie_privacy.html` |
-| `__foodie.html` | The real Foodie product page — **parked**; rename it over `foodie.html` when Foodie ships |
+| `foodie.html` | Foodie product page (live since 2026-10-14). Copy is Duncan's, from the old foodiesharing.com, in its three groups. Mojo-style points for landscape iPad, Conversion tile row for portrait iPhone |
+| `__foodie.html` | The old parked Foodie page — **superseded** by `foodie.html`. Its roadmap and pricing copy are out of date; kept only until Duncan decides to delete it |
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
 | `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
-| `assets/img/foodie/` | Screenshots from `~/Desktop/code/Projects/Foodie4/screenshots` |
+| `assets/img/foodie/` | `ipad-0*.jpg` and `iphone-0*.jpg` are the App Store screenshots from `~/Desktop/Foodie4/fastlane/screenshots/en-AU`. `ipad-scaling/converter/share-menu/dark.jpg` were taken on the Foodie-Dev-iPad simulator, landscape, 2026-10-14. Everything else is pre-release captures, unused |
 | `assets/img/conversion/` | One shot per category, named for it — see **Screenshots** below |
 | `assets/img/mojo/` | Nine Mac window captures, numbered in page order — see **Screenshots** below |
 | `assets/img/stiction/` | `1.jpg`–`8.jpg`, one per level, in page order — see **Screenshots** below |

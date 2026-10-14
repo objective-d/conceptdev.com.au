@@ -3,23 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Foodie | Concept Development</title>
-<meta name="description" content="Foodie — coming soon.">
+<title>Foodie — Effortless recipe management | Concept Development</title>
+<meta name="description" content="Foodie is a recipe manager for iPhone and iPad. Collections, cooking mode, shopping lists and a meal plan, synced with iCloud.">
 <meta name="theme-color" content="#fbfbfa">
-<meta property="og:title" content="Foodie">
-<meta property="og:description" content="Coming soon.">
+<meta property="og:title" content="Foodie — Effortless recipe management">
+<meta property="og:description" content="A recipe manager for iPhone and iPad.">
 <meta property="og:type" content="product">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css?v=2">
 <link rel="icon" href="assets/img/logo/mark.svg" type="image/svg+xml">
 <!-- Before the first paint, so the scroll reveal can hide things. Everything
      it hides is visible without it — see .js .reveal in site.css. -->
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-
-<!-- TEMPORARY placeholder. The finished product page is parked on disk as
-     __foodie.html; when Foodie ships, rename that file over this one and the
-     link from the home page shelf card keeps working unchanged. -->
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -38,6 +34,7 @@
 
 <main id="main">
 
+  <!-- ============================ HERO ============================ -->
   <section class="app-hero">
     <div class="wrap">
       <div class="app-hero__id">
@@ -46,12 +43,237 @@
         <img class="app-hero__icon" src="assets/img/icons/foodie.png" alt="" width="88" height="88">
         <div>
           <h1>Foodie</h1>
-          <p>Coming soon</p>
+          <p>Effortless recipe management</p>
         </div>
       </div>
 
-      <div class="btn-row" style="margin-top: 2rem;">
-        <a class="btn btn--ghost" href="foodie_privacy.html">Privacy</a>
+      <p class="lede">
+        The simple and powerful way to manage and share your favourite
+        recipes. With a clean, photo-based interface and a range of kitchen
+        tools, it's also the perfect cooking companion.
+      </p>
+    </div>
+  </section>
+
+  <!-- The copy is Duncan's, from the old foodiesharing.com, grouped the same
+       way. Landscape iPad shots: ipad-01 to 05 are the App Store pictures
+       (~/Desktop/Foodie4/fastlane/screenshots/en-AU, 13-inch); scaling,
+       converter, share-menu and dark were taken on the Foodie-Dev-iPad
+       simulator (11-inch), so they sit a little short in a 4:3 panel. -->
+
+  <!-- ============================ YOUR RECIPES ============================ -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Your recipes. Your way.</h2>
+      </div>
+
+      <div class="points">
+        <div class="point point--wide reveal">
+          <figure class="shot">
+            <img src="assets/img/foodie/ipad-01-library.jpg"
+                 alt="Foodie on iPad: a sidebar with Tools, Library and Collections beside a grid of recipe photos with ratings and cooking times."
+                 width="2000" height="1500" loading="eager" decoding="async" fetchpriority="high">
+          </figure>
+        </div>
+      </div>
+
+      <div class="features features--3" style="margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);">
+        <div class="feature reveal">
+          <h3>Manage</h3>
+          <p>Effortlessly manage your recipes with a simple and intuitive interface. Add your own, or import them from any website with a couple of taps.</p>
+        </div>
+        <div class="feature reveal">
+          <h3>Organise</h3>
+          <p>Quickly search for, and group recipes into collections that are meaningful to you &ndash; forget the one-size-fits-all approach.</p>
+        </div>
+        <div class="feature reveal">
+          <h3>Sync</h3>
+          <p>iCloud syncing keeps your recipes up to date across all your devices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ COOKING ============================ -->
+  <section class="section section--sunken rule-top">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Your cooking companion</h2>
+      </div>
+
+      <div class="points">
+        <div class="point point--wide reveal">
+          <figure class="shot">
+            <img src="assets/img/foodie/ipad-scaling.jpg"
+                 alt="A recipe for Chicken and Prawn Laksa scaled to 2×: it now serves 8, and every ingredient amount is doubled."
+                 width="2000" height="1378" loading="lazy" decoding="async">
+          </figure>
+          <div class="point__body">
+            <h3>Recipe scaling</h3>
+            <p>Scale recipes up or down by simply changing the serving size &ndash; the ingredients scale automatically. Switch between metric and imperial with a single tap.</p>
+          </div>
+        </div>
+
+        <div class="point reveal">
+          <figure class="shot">
+            <img src="assets/img/foodie/ipad-converter.jpg"
+                 alt="The converter: oven temperatures in Celsius, Fahrenheit and gas marks, and 2 cups converted to 470 millilitres."
+                 width="2000" height="1378" loading="lazy" decoding="async">
+          </figure>
+          <div class="point__body">
+            <h3>Cooking tools</h3>
+            <p>Easily convert between common units. Use the kitchen timer with prep and cook times predefined for each recipe.</p>
+          </div>
+        </div>
+
+        <div class="point reveal">
+          <figure class="shot">
+            <img src="assets/img/foodie/ipad-03-cook-mode.jpg"
+                 alt="Hands-free mode: step 1 of 7 in large type, with the next steps faded below it."
+                 width="2000" height="1500" loading="lazy" decoding="async">
+          </figure>
+          <div class="point__body">
+            <h3>Kitchen friendly</h3>
+            <p>Big &amp; bright directions help you focus on your cooking. Let Foodie read your recipe aloud using hands-free mode.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SHARE ============================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Share with family and friends</h2>
+      </div>
+
+      <div class="points">
+        <div class="point point--wide reveal">
+          <figure class="shot">
+            <img src="assets/img/foodie/ipad-share-menu.jpg"
+                 alt="The Share Recipe menu open over a recipe, offering a Foodie Recipe file or a PDF."
+                 width="2000" height="1378" loading="lazy" decoding="async">
+          </figure>
+          <div class="point__body">
+            <h3>Share</h3>
+            <p>Share your recipes with a single tap &ndash; by AirDrop, email or PDF, or print them. Share an entire collection with other Foodie users and everyone's collections stay in sync &ndash; perfect for keeping a shared cookbook with your family and friends.</p>
+          </div>
+        </div>
+
+        <div class="point reveal">
+          <figure class="shot">
+            <img src="assets/img/foodie/ipad-04-shopping-list.jpg"
+                 alt="A shopping list for Chicken and Prawn Laksa, grouped under Fruit and Veg, over the recipe library."
+                 width="2000" height="1500" loading="lazy" decoding="async">
+          </figure>
+          <div class="point__body">
+            <h3>Shopping lists</h3>
+            <p>Add a recipe's ingredients to a shopping list, grouped by aisle. Shared lists update live for everyone, or share them through the Reminders app.</p>
+          </div>
+        </div>
+
+        <div class="point reveal">
+          <figure class="shot">
+            <img src="assets/img/foodie/ipad-05-meal-plan.jpg"
+                 alt="A week's meal plan, with breakfast, lunch and dinner across seven days."
+                 width="2000" height="1500" loading="lazy" decoding="async">
+          </figure>
+          <div class="point__body">
+            <h3>Meal plan</h3>
+            <p>Plan the week, and keep it in a shared Calendar for everyone to see.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ APPLE PLATFORM ============================ -->
+  <section class="section section--sunken rule-top">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>A first-class Apple citizen</h2>
+      </div>
+
+      <div class="points">
+        <div class="point point--wide reveal">
+          <figure class="shot">
+            <img src="assets/img/foodie/ipad-dark.jpg"
+                 alt="The Chicken and Prawn Laksa recipe in dark mode."
+                 width="2000" height="1378" loading="lazy" decoding="async">
+          </figure>
+          <div class="point__body">
+            <ul class="langs">
+              <li>40+ languages</li>
+              <li>Dark mode</li>
+              <li>VoiceOver</li>
+              <li>Dynamic Type</li>
+              <li>Siri &amp; Shortcuts</li>
+              <li>Spotlight</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ IPHONE ============================
+       The same five, portrait iPhone. Tile board as on Conversion, five
+       across so they land as one row. Scaled to 603 px wide, as Stiction. -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>iPhone too!</h2>
+      </div>
+
+      <div class="gallery gallery--tiles reveal">
+        <figure class="shot shot--phone">
+          <img src="assets/img/foodie/iphone-01-library.jpg"
+               alt="Foodie on iPhone: the recipe library, two photos across."
+               width="603" height="1310" loading="lazy" decoding="async">
+        </figure>
+        <figure class="shot shot--phone">
+          <img src="assets/img/foodie/iphone-02-recipe.jpg"
+               alt="The Chicken and Prawn Laksa recipe on iPhone, with its ingredients."
+               width="603" height="1310" loading="lazy" decoding="async">
+        </figure>
+        <figure class="shot shot--phone">
+          <img src="assets/img/foodie/iphone-03-cook-mode.jpg"
+               alt="Cooking mode on iPhone, showing step 1 of 7."
+               width="603" height="1310" loading="lazy" decoding="async">
+        </figure>
+        <figure class="shot shot--phone">
+          <img src="assets/img/foodie/iphone-04-shopping-list.jpg"
+               alt="A shopping list on iPhone, grouped under Fruit and Veg."
+               width="603" height="1310" loading="lazy" decoding="async">
+        </figure>
+        <figure class="shot shot--phone">
+          <img src="assets/img/foodie/iphone-05-meal-plan.jpg"
+               alt="The meal plan on iPhone, listing the week day by day."
+               width="603" height="1310" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ AVAILABILITY ============================ -->
+  <section class="section section--sunken rule-top">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow eyebrow--accent">Availability</p>
+        <p class="lede" style="margin-bottom: 1.6rem;">
+          Available today for free on the App Store for iPhone and iPad, iOS&nbsp;26 and later.
+          iPhone Duo and Mac version coming soon.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="https://apps.apple.com/au/app/foodie-recipe-manager/id577670082">Download on the App Store <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="mailto:info@conceptdev.com.au?subject=Foodie">Email us</a>
+          <a class="btn btn--ghost" href="foodie_privacy.html">Privacy</a>
+        </div>
       </div>
     </div>
   </section>
