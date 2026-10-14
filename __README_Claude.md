@@ -226,7 +226,8 @@ Mojo and Conversion were in the header nav and footer. **Both are now false** �
 see below.
 
 **The home page was rebuilt.** The hero is centred over a lead screenshot
-(`assets/img/mojo/01-native.png`, the Mojo window) with a soft indigo wash
+(`assets/img/foodie/ipad-01-library.jpg` since 2026-10-14; it was the Mojo
+window before) with a soft indigo wash
 behind the headline, and the apps are a **shelf**, not the old card grid:
 `.shelf` / `.shelf-card`, three across at 1040px, two at 720px, one below that.
 All five cards are equal width — an earlier `shelf-card--feature` modifier gave
@@ -361,9 +362,8 @@ Things that cost time and will cost it again:
 - `og:image` is not set on any page.
 - **`assets/img/mojo/` is 6.8 MB of PNGs**, the largest 1.7 MB. Everything below
   the lead shot is `loading="lazy"`, so the first paint is not 6.8 MB, but the
-  page is still far heavier than any other — and `01-native.png` is now the
-  home page's lead shot too, so it is on the critical path for the *whole
-  site*, not just `mojo.html`. Re-encoding is the fix and has not been done;
+  page is still far heavier than any other. (It was also the home page's lead
+  shot until 2026-10-14; that is now a Foodie JPEG.) Re-encoding is the fix and has not been done;
   `assets/img/stiction/` is the worked example under **Screenshots**. ⚠️ Mojo's
   captures have a **transparent surround** that `.shot--mac` depends on, so
   they cannot simply become JPEGs the way Stiction's did — WebP or PNG
