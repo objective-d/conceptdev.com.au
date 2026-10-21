@@ -414,8 +414,9 @@ Things that cost time and will cost it again:
   an edit re-fetches the HTML and keeps the old CSS, so a change appears not to
   have worked. Append `?v=<something>` to both links while previewing, and take
   it off before committing. ⚠️ **Exception, deliberate:** `index.html`, `foodie.html` and `conversion.html` link
-  `site.css?v=6`, committed and live (the frames are new CSS those pages
-  need). Duncan's browser kept showing old spacing
+  `site.css?v=8` and `site.js?v=7`, committed and live (the frames, and the
+  enlarged view keeping them, are new CSS and JS those pages need). Mac shots
+  (`shot--mac`) never get a frame, on the page or enlarged. Duncan's browser kept showing old spacing
   after a Cmd+Shift+R, and the query string was what got it through. The other
   pages link plain `site.css`. Bump it if a Foodie-only CSS change "does
   nothing".

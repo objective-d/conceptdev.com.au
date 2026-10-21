@@ -944,13 +944,29 @@ td { color: var(--ink-muted); }
 
 .lightbox img {
   max-width: 100%;
-  max-height: 100%;
+  /* 100% does not hold here (the grid row has no set height), so a tall phone
+     capture used to run off the bottom; the window height minus the padding
+     does. */
+  max-height: calc(100dvh - 2 * clamp(1rem, 0.4rem + 3vw, 3.5rem));
   width: auto;
   height: auto;
   object-fit: contain;
   cursor: default;
   filter: drop-shadow(0 2px 6px rgba(16, 16, 22, 0.18))
           drop-shadow(0 24px 60px rgba(16, 16, 22, 0.28));
+}
+
+/* The same drawn frame as .shot--device, sized to the window rather than the
+   panel. A phone is height-bound here, so its share is taken from the height. */
+.lightbox--device img {
+  border: max(6px, 1.2vmin) solid #0b0b0c;
+  border-radius: max(14px, 3vmin);
+  background: #0b0b0c;
+  box-shadow: 0 0 0 1.5px #3a3a3c;
+}
+.lightbox--phone img {
+  border-width: max(6px, 1.5vh);
+  border-radius: max(24px, 6vh);
 }
 
 .lightbox__close {

@@ -106,6 +106,10 @@
     opener = btn;
     big.src = img.currentSrc || img.src;
     big.alt = img.alt;
+    /* A framed device picture keeps its frame when it is enlarged. */
+    var shot = img.closest('.shot');
+    box.classList.toggle('lightbox--device', !!(shot && shot.classList.contains('shot--device')));
+    box.classList.toggle('lightbox--phone', !!(shot && shot.classList.contains('shot--phone')));
     box.hidden = false;
     document.body.style.overflow = 'hidden';
     closeBtn.focus();
