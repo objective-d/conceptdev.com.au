@@ -104,8 +104,9 @@ curl -s https://conceptdev.com.au/assets/css/site.css | diff - assets/css/site.c
 | `conversion.html` | Conversion product page — live, reachable **only from its card** |
 | `stiction.html` | Stiction product page — live, reachable **only from its card** |
 | `mojo.html` | Mojo product page — live, reachable **only from its card** |
-| `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html`, `foodie_privacy.html` | Per-app privacy policies, each linked from its product page. Standalone: their own inline `<style>`, they do **not** load `site.css` |
+| `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html`, `foodie_privacy.html`, `clive_privacy.html` | Per-app privacy policies, each linked from its product page. Standalone: their own inline `<style>`, they do **not** load `site.css` |
 | `foodie.html` | Foodie product page (live since 2026-10-14). Copy is Duncan's, from the old foodiesharing.com, in its three groups. Mojo-style points for landscape iPad, Conversion tile row for portrait iPhone |
+| `clive.html` | **Placeholder** for Clive (ZX Spectrum emulator, Mac, not yet released — App Store id 6825200276 per `~/Desktop/Clive` git log, not yet linked). Icon, name, "Coming soon", Duncan's one-line description, Privacy button. Replace with the product page when Clive ships; the home card already links here |
 | `__foodie.html` | The old parked Foodie page — **superseded** by `foodie.html`, with wrong copy (roadmap lists shipped features; pricing is not the shipped model). Agreed for deletion — see **Pick up here** |
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
@@ -296,11 +297,14 @@ the extra space read as a hole.
 
 **Card order follows a rule, set by Duncan on 2026-09-03: released apps first,
 newest release first**, then the unreleased ones. Today that is Foodie (shipped
-2026-10-08, page live 2026-10-14), Mojo, Stiction, Conversion, Astronomical. When the next app ships it goes to the front —
+2026-10-08, page live 2026-10-14), Mojo, Stiction, Conversion, then Clive and
+Astronomical (unreleased; Clive first because it has a page). When the next app ships it goes to the front —
 that is the rule, so apply it rather than asking.
 
 `shelf-card--soon` removes the hover lift from a card with nothing to click. It
-is on Astronomical only — the one app that is not out and has no page. ⚠️ This
+is on Astronomical only — the one app that is not out and has no page. Clive
+(added 2026-10-21) is badged **and** clickable, linking to its placeholder, the
+way Foodie was from 2026-09-30. ⚠️ This
 used to say Foodie too; Foodie lost it on 2026-09-30 and its badge on
 2026-10-14.
 
@@ -424,6 +428,19 @@ Things that cost time and will cost it again:
   `.point .shot` carries only padding.
 
 ## Known gaps
+
+- **Clive's facts for `clive_privacy.html`** (checked 2026-10-21 in
+  `~/Desktop/Clive`): sandboxed, entitlements are user-selected read-write files
+  and app-scope bookmarks only — **no network entitlement**, and no URLSession,
+  CloudKit or StoreKit in the code. Stores preferences, library folders
+  (bookmarks), favourites and recent games in UserDefaults; save slots and
+  played-game pictures in Application Support; reads game controllers. Re-check
+  these before Clive ships — the policy says "no network requests".
+- **Mac app icons** (Mojo, Clive) have a transparent margin, so the
+  `box-shadow` on `.app-hero__icon` and `.shelf-card__icon` draws a faint square
+  around them. Not fixed; would need `filter: drop-shadow` for Mac icons.
+  Clive's icon is an Icon Composer `.icon` bundle; `clive.png` was rendered at
+  512 px from the built app with `NSWorkspace.shared.icon(forFile:)`.
 
 - The App Store needs a support URL, and there is no support page. It will have
   to be the contact address, or a page written when one is asked for.

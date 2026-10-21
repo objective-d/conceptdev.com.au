@@ -61,6 +61,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   --accent-stiction:     #2f6b1e;   /* neon green, darkened for text — 5.8:1 */
   --accent-astronomical: #8a5a0f;   /* icon amber, darkened for text — 5.6:1 */
   --accent-mojo:         #5b4bd6;   /* the icon's indigo — 5.9:1 */
+  --accent-clive:        #3a3d9c;   /* the icon's navy — 8.7:1 */
 
   /* Type scale — fluid */
   --step--1: clamp(0.83rem, 0.80rem + 0.15vw, 0.92rem);
@@ -835,10 +836,12 @@ td { color: var(--ink-muted); }
 .page-conversion { --accent-page: var(--accent-conversion); }
 .page-mojo       { --accent-page: var(--accent-mojo); }
 .page-stiction   { --accent-page: var(--accent-stiction); }
+.page-clive      { --accent-page: var(--accent-clive); }
 .page-foodie .eyebrow--accent     { color: var(--accent-foodie); }
 .page-conversion .eyebrow--accent { color: var(--accent-conversion); }
 .page-mojo .eyebrow--accent       { color: var(--accent-mojo); }
 .page-stiction .eyebrow--accent   { color: var(--accent-stiction); }
+.page-clive .eyebrow--accent      { color: var(--accent-clive); }
 
 /* App hero header on product pages */
 .app-hero {
