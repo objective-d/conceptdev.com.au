@@ -194,7 +194,7 @@ easily.
 `~/Desktop/code/Projects/Foodie4` as this used to say. Duncan's rules for these:
 **landscape iPad, portrait iPhone, and as few as will do the job.**
 ⚠️ This used to say "no device frame". Since 2026-10-22 every device picture on
-`foodie.html` and `conversion.html` sits in a **drawn frame**: add
+`foodie.html` and `conversion.html`, and the home page's top picture, sits in a **drawn frame**: add
 `shot--device` to the `<figure>` (see the `.shot--device` rules in
 `site.css`). It is CSS, not part of the image, and sized in container units
 (`cqw`), so the bezel is the same share of the picture at any size; phones get
@@ -413,8 +413,8 @@ Things that cost time and will cost it again:
 - **The browser caches `site.css` and `site.js` hard.** Reloading a preview after
   an edit re-fetches the HTML and keeps the old CSS, so a change appears not to
   have worked. Append `?v=<something>` to both links while previewing, and take
-  it off before committing. ⚠️ **Exception, deliberate:** `foodie.html` and `conversion.html` link
-  `site.css?v=5`, committed and live (the frames are new CSS those two pages
+  it off before committing. ⚠️ **Exception, deliberate:** `index.html`, `foodie.html` and `conversion.html` link
+  `site.css?v=6`, committed and live (the frames are new CSS those pages
   need). Duncan's browser kept showing old spacing
   after a Cmd+Shift+R, and the query string was what got it through. The other
   pages link plain `site.css`. Bump it if a Foodie-only CSS change "does

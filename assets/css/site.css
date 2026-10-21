@@ -639,7 +639,8 @@ a:hover { text-decoration-color: currentColor; }
   align-items: center;
 }
 .point .shot--device img,
-.gallery .shot--device img {
+.gallery .shot--device img,
+.hero-shot.shot--device img {
   aspect-ratio: auto;
   border: max(4px, 1.3cqw) solid #0b0b0c;
   border-radius: max(10px, 3.2cqw);
