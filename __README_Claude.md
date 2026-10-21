@@ -111,7 +111,7 @@ curl -s https://conceptdev.com.au/assets/css/site.css | diff - assets/css/site.c
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
 | `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
-| `assets/img/foodie/` | `ipad-0*.jpg` and `iphone-0*.jpg` are the App Store screenshots from `~/Desktop/Foodie4/fastlane/screenshots/en-AU`. `ipad-scaling/converter/share-menu/dark.jpg` were taken on the Foodie-Dev-iPad simulator, landscape, 2026-10-14. Everything else (23 files, ~5 MB) is pre-release captures, unused, agreed for deletion |
+| `assets/img/foodie/` | `ipad-0*.jpg` and `iphone-0*.jpg` are the App Store screenshots from `~/Desktop/Foodie4/fastlane/screenshots/en-AU`. `ipad-scaling/converter/share-menu/dark.jpg` were taken on the Foodie-Dev-iPad simulator, landscape, 2026-10-14. `duo-0*.jpg` (added 2026-10-22) are the iPhone Duo App Store pictures, open and sideways, from `~/Desktop/Foodie4/Foodie-fixtures/release-4.1/duo-final/en-AU` (2853×2007), scaled to 1200 px; a second tile row under the iPhone row, same screens in the same columns. Everything else (23 files, ~5 MB) is pre-release captures, unused, agreed for deletion |
 | `assets/img/conversion/` | One shot per category, named for it — see **Screenshots** below |
 | `assets/img/mojo/` | Nine Mac window captures, numbered in page order — see **Screenshots** below |
 | `assets/img/stiction/` | `1.jpg`–`8.jpg`, one per level, in page order — see **Screenshots** below |
