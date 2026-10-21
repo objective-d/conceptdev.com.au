@@ -666,6 +666,9 @@ a:hover { text-decoration-color: currentColor; }
   color: var(--ink-muted);
   max-width: 46ch;
 }
+/* Under a full-width shot the words can run the full width too (Duncan,
+   2026-10-22); the 46ch limit is for the half-width points. */
+.point--wide .point__body p { max-width: none; }
 .point__body .langs { margin-top: 0.85rem; }
 
 /* Split: text one side, shot the other */
