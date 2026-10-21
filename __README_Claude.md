@@ -436,11 +436,13 @@ Things that cost time and will cost it again:
   (bookmarks), favourites and recent games in UserDefaults; save slots and
   played-game pictures in Application Support; reads game controllers. Re-check
   these before Clive ships — the policy says "no network requests".
-- **Mac app icons** (Mojo, Clive) have a transparent margin, so the
-  `box-shadow` on `.app-hero__icon` and `.shelf-card__icon` draws a faint square
-  around them. Not fixed; would need `filter: drop-shadow` for Mac icons.
-  Clive's icon is an Icon Composer `.icon` bundle; `clive.png` was rendered at
-  512 px from the built app with `NSWorkspace.shared.icon(forFile:)`.
+- **Mac app icons** (Mojo) have a transparent margin, so the `box-shadow` on
+  `.app-hero__icon` and `.shelf-card__icon` draws a faint square around them and
+  they look small. Clive's was the same, and Duncan asked for it to match
+  Conversion's full-square icon, so `clive.png` is now a flat 512 px square
+  composited from the layers in `~/Desktop/Clive/Clive/AppIcon.icon` (gradient
+  from `icon.json`, then suit, face, hair, mouth, lens, frame, pupil); the CSS
+  radius rounds it. Mojo's icon could be redone the same way if asked.
 
 - The App Store needs a support URL, and there is no support page. It will have
   to be the contact address, or a page written when one is asked for.
