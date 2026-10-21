@@ -624,6 +624,34 @@ a:hover { text-decoration-color: currentColor; }
 /* The lead shot is the app itself. It keeps its own shape at full width. */
 .point--wide .shot img { aspect-ratio: auto; }
 
+/* Device pictures in a drawn frame: a black bezel with a dark grey edge, in
+   the style of Simulator's frames (Xcode has no frame for the open iPhone Duo,
+   so all of them are drawn the same way). The frame goes round the image, so
+   the image keeps its own shape rather than the 4:3 panel's. Sizes are in
+   container units, so the bezel is the same share of the picture at any size. */
+.shot--device { container-type: inline-size; }
+/* Two pictures of different shapes can share a row (an 11-inch and a 13-inch
+   iPad). The panels stretch to the same height and centre the shorter one, so
+   the words under both still start level. */
+.point .shot--device {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.point .shot--device img,
+.gallery .shot--device img {
+  aspect-ratio: auto;
+  border: max(4px, 1.3cqw) solid #0b0b0c;
+  border-radius: max(10px, 3.2cqw);
+  background: #0b0b0c;
+  box-shadow: 0 0 0 1.5px #3a3a3c, 0 10px 28px rgba(16, 16, 22, 0.18);
+}
+/* A phone's bezel and corners are a bigger share of its width. */
+.gallery .shot--device.shot--phone img {
+  border-width: max(4px, 3.6cqw);
+  border-radius: max(14px, 14cqw);
+}
+
 /* The words are a caption now, not a facing column, so they sit at caption
    size and start at the panel's left edge. */
 .point__body h3 {

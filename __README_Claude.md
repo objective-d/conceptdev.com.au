@@ -192,8 +192,15 @@ easily.
 `assets/img/foodie/`: the page uses only the `ipad-*` and `iphone-*` files.
 ⚠️ The Foodie project is at **`~/Desktop/Foodie4`**, not
 `~/Desktop/code/Projects/Foodie4` as this used to say. Duncan's rules for these:
-**landscape iPad, portrait iPhone, plain screenshots with no device frame, and
-as few as will do the job.**
+**landscape iPad, portrait iPhone, and as few as will do the job.**
+⚠️ This used to say "no device frame". Since 2026-10-22 every device picture on
+`foodie.html` and `conversion.html` sits in a **drawn frame**: add
+`shot--device` to the `<figure>` (see the `.shot--device` rules in
+`site.css`). It is CSS, not part of the image, and sized in container units
+(`cqw`), so the bezel is the same share of the picture at any size; phones get
+a thicker bezel and rounder corners. Xcode has no frame for the open iPhone
+Duo (`phone15.devicechrome` is the closed Duo), which is why it is drawn.
+Stiction's shots are not framed — nobody asked.
 
 - `ipad-01/03/04/05-*.jpg` and `iphone-0*.jpg` are the App Store pictures,
   `~/Desktop/Foodie4/fastlane/screenshots/en-AU`, scaled to 2000 px (iPad,
@@ -406,8 +413,9 @@ Things that cost time and will cost it again:
 - **The browser caches `site.css` and `site.js` hard.** Reloading a preview after
   an edit re-fetches the HTML and keeps the old CSS, so a change appears not to
   have worked. Append `?v=<something>` to both links while previewing, and take
-  it off before committing. ⚠️ **Exception, deliberate:** `foodie.html` links
-  `site.css?v=2`, committed and live. Duncan's browser kept showing old spacing
+  it off before committing. ⚠️ **Exception, deliberate:** `foodie.html` and `conversion.html` link
+  `site.css?v=5`, committed and live (the frames are new CSS those two pages
+  need). Duncan's browser kept showing old spacing
   after a Cmd+Shift+R, and the query string was what got it through. The other
   pages link plain `site.css`. Bump it if a Foodie-only CSS change "does
   nothing".
