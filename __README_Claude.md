@@ -20,15 +20,17 @@ Rewritten 2026-10-31. The old Foodie files are deleted, the dead card CSS is
 gone, Mojo's pictures are WebP, `og:image` is set, and Clive is marked as
 released. Nothing is half-built.
 
-1. **Clive's full product page.** Clive shipped on 2026-10-30 (free, macOS 26,
-   App Store id **6825200276**). `clive.html` is still the short page — icon,
-   name, one line, App Store / Email us / Privacy. It needs screenshots and
-   points like Mojo's. Both need Duncan: **he takes the pictures and gives the
-   words — do not draft them**, see **Copy**.
+1. **Duncan to look over `clive.html`** (built 2026-10-31, not yet pushed
+   unless the git log says so). Clive shipped on 2026-10-30 (free, macOS 26, App
+   Store id **6825200276**). The page is laid out like `mojo.html`; its words are
+   the App Store description, split into one point per picture with only two
+   small changes: the game-manager line is split into heading + line, and the
+   keyboard line's second half starts "It even maps…". The Jetpac App Store
+   shot was left out (near square, so huge at full width) and its words kept as
+   a text-only point. The 30 s app preview video is not used.
 2. **Stiction availability wording.** `stiction.html` has the buttons but no
    eyebrow, heading or "what it needs to run" line. Needs Duncan's words.
-3. **Mojo still has no App Store button** — its id is unknown. Ask for it.
-4. **Privacy pages have no `og:image`.** Nobody shares them; left alone.
+3. **Privacy pages have no `og:image`.** Nobody shares them; left alone.
 
 ## Never looked at
 
@@ -92,13 +94,15 @@ curl -s https://conceptdev.com.au/assets/css/site.css | diff - assets/css/site.c
 | `mojo.html` | Mojo product page — live, reachable **only from its card** |
 | `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html`, `foodie_privacy.html`, `clive_privacy.html` | Per-app privacy policies, each linked from its product page. Standalone: their own inline `<style>`, they do **not** load `site.css` |
 | `foodie.html` | Foodie product page (live since 2026-10-14). Copy is Duncan's, from the old foodiesharing.com, in its three groups. Mojo-style points for landscape iPad, Conversion tile row for portrait iPhone |
-| `clive.html` | Clive (ZX Spectrum emulator, Mac, **released 2026-10-30**, App Store id 6825200276). Still the short page: icon, name, "ZX Spectrum emulator", Duncan's one-line description, App Store / Email us / Privacy. Screenshots and points to come — see **Pick up here** |
+| `clive.html` | Clive product page (ZX Spectrum emulator, Mac, **released 2026-10-30**, App Store id 6825200276). Built 2026-10-31 in Mojo's layout: library shot full width, then four shots two to a row, a text-only formats point, "No games included." and the buttons. Words from `~/Desktop/Clive/fastlane/metadata/en-AU/description.txt` |
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
 | `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
 | `assets/img/foodie/` | `ipad-0*.jpg` and `iphone-0*.jpg` are the App Store screenshots from `~/Desktop/Foodie4/fastlane/screenshots/en-AU`. `ipad-scaling/converter/share-menu/dark.jpg` were taken on the Foodie-Dev-iPad simulator, landscape, 2026-10-14. `duo-0*.jpg` (added 2026-10-22) are the iPhone Duo App Store pictures, open and sideways, from `~/Desktop/Foodie4/Foodie-fixtures/release-4.1/duo-final/en-AU` (2853×2007), scaled to 1200 px (`duo-01` to 2000 px). Shown in the points layout under the iPhone row — library full width, then two to a row. A tile row matching the iPhone row was tried first and was too small (Duncan). The 23 pre-release captures were deleted on 2026-10-31 |
 | `assets/img/conversion/` | One shot per category, named for it — see **Screenshots** below |
 | `assets/img/mojo/` | Nine Mac window captures (WebP), numbered in page order — see **Screenshots** below |
+| `assets/img/clive/` | Five WebP window cut-outs, numbered in page order — see **Screenshots** below |
+| `tools/clive-cutout.swift` | Turns a Clive App Store screenshot into a window with a transparent surround — see **Screenshots**. Not linked from any page (but GitHub Pages does serve it) |
 | `assets/img/stiction/` | `1.jpg`–`8.jpg`, one per level, in page order — see **Screenshots** below |
 
 ## The mark
@@ -254,6 +258,25 @@ keeps the transparency: 6.8 MB → 1.3 MB. To replace one, take Duncan's PNG and
 `cwebp -q 85 -alpha_q 100 -exact in.png -o NN-name.webp` (Homebrew `cwebp`).
 Not JPEG — JPEG has no transparency.
 
+`assets/img/clive/` is five of Clive's App Store pictures,
+`~/Desktop/Clive/Distribution/Screenshots/en-AU` (made by that folder's
+`take-screenshots.sh`; its README says what each shows). Those are 2880×1800
+with a flat ground and a drawn shadow, laid out by its `canvas.swift`.
+`tools/clive-cutout.swift` undoes that: from the edges inward, every pixel that
+is the ground darkened by the shadow becomes transparent, then it crops. So they
+are window cut-outs like Mojo's and use `.shot--mac`. To redo one:
+
+```bash
+swiftc -O tools/clive-cutout.swift -o /tmp/cutout
+/tmp/cutout ~/Desktop/Clive/Distribution/Screenshots/en-AU/2_library.png /tmp/01-library.png light
+cwebp -q 85 -alpha_q 100 -exact /tmp/01-library.png -o assets/img/clive/01-library.webp
+```
+
+Pass `dark` for `5_dark_borderless`. ⚠️ Check the result on a bright
+background: a neutral grey inside the window (the +3 start-up screen, the
+library sidebar) leaked out with a looser colour test. If `canvas.swift`'s ground
+colours or shadow change, change the tool to match.
+
 `assets/img/stiction/` is eight captures, `1.jpg`–`8.jpg`, one per level, in the
 order they appear on the page — the alt text is "Stiction level 1" and so on, so
 **the filename number is the level number**; keep that if you reshoot. Duncan
@@ -317,10 +340,9 @@ full size.
 
 **Conversion, Stiction and Mojo have launched**, so none of them carries a
 badge. Mojo went on sale 2026-09-02 and its "Coming soon" badge came off the
-same day. ⚠️ **`mojo.html` still has no App Store button** — Conversion and
-Stiction both lead their button row with one, Mojo's row is Email us and
-Privacy only, because nobody has supplied its App Store id yet. Conversion is
-`286552073`, Stiction is `6799792974`; Mojo's is unknown.
+same day. ⚠️ This used to say `mojo.html` has no App Store button. **It has
+one** (checked 2026-10-31). App Store ids: Conversion `286552073`, Stiction
+`6799792974`, Mojo `6805051709`, Foodie `577670082`, Clive `6825200276`.
 
 **Stiction has a page**, added 2026-08-25: `stiction.html`, App Store id
 **6799792974**. Hero, then the eight level shots as `gallery gallery--tiles
@@ -402,7 +424,7 @@ Things that cost time and will cost it again:
   an edit re-fetches the HTML and keeps the old CSS, so a change appears not to
   have worked. Append `?v=<something>` to both links while previewing, and take
   it off before committing. ⚠️ **Exception, deliberate:** `index.html`, `foodie.html` and `conversion.html` link
-  `site.css?v=9` and `site.js?v=7`, committed and live (the frames, and the
+  `site.css?v=9` and `site.js?v=7` (`clive.html`: `site.css?v=10`, for its hero padding), committed and live (the frames, and the
   enlarged view keeping them, are new CSS and JS those pages need). Mac shots
   (`shot--mac`) never get a frame, on the page or enlarged. Duncan's browser kept showing old spacing
   after a Cmd+Shift+R, and the query string was what got it through. The other
