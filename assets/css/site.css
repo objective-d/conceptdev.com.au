@@ -504,6 +504,14 @@ a:hover { text-decoration-color: currentColor; }
 
 /* The lead shot is the app itself. It keeps its own shape at full width. */
 .point--wide .shot img { aspect-ratio: auto; }
+/* An upright capture at full width would be taller than the screen, so it is
+   held to a height and centred on its panel instead. */
+.point--wide .shot--upright img {
+  width: auto;
+  max-width: 100%;
+  max-height: min(80vh, 900px);
+  margin-inline: auto;
+}
 
 /* Device pictures in a drawn frame: a black bezel with a dark grey edge, in
    the style of Simulator's frames (Xcode has no frame for the open iPhone Duo,

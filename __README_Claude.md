@@ -23,11 +23,15 @@ released. Nothing is half-built.
 1. **Duncan to look over `clive.html`** (built 2026-10-31, not yet pushed
    unless the git log says so). Clive shipped on 2026-10-30 (free, macOS 26, App
    Store id **6825200276**). The page is laid out like `mojo.html`; its words are
-   the App Store description, split into one point per picture with only two
-   small changes: the game-manager line is split into heading + line, and the
-   keyboard line's second half starts "It even maps…". The Jetpac App Store
-   shot was left out (near square, so huge at full width) and its words kept as
-   a text-only point. The 30 s app preview video is not used.
+   the App Store description, one point per picture. Duncan's calls, same day:
+   the **keyboard shot is the lead**, not the library; **no file-format list**
+   ("Plays TZX, TAP…" read as AI speak); and the long one-sentence headings
+   wrapped badly, so each bullet is now a **short heading lifted from its own
+   words** with the rest of the sentence under it ("Faithful to the original
+   hardware", "Fun extras", …). No new words were added. The Jetpac App Store
+   shot was left out (near square, so huge at full width). "GPU-based Metal
+   graphics" breaks the no-framework-names rule but is Duncan's — ask before
+   cutting it. The 30 s app preview video is not used.
 2. **Stiction availability wording.** `stiction.html` has the buttons but no
    eyebrow, heading or "what it needs to run" line. Needs Duncan's words.
 3. **Privacy pages have no `og:image`.** Nobody shares them; left alone.
@@ -94,7 +98,7 @@ curl -s https://conceptdev.com.au/assets/css/site.css | diff - assets/css/site.c
 | `mojo.html` | Mojo product page — live, reachable **only from its card** |
 | `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html`, `foodie_privacy.html`, `clive_privacy.html` | Per-app privacy policies, each linked from its product page. Standalone: their own inline `<style>`, they do **not** load `site.css` |
 | `foodie.html` | Foodie product page (live since 2026-10-14). Copy is Duncan's, from the old foodiesharing.com, in its three groups. Mojo-style points for landscape iPad, Conversion tile row for portrait iPhone |
-| `clive.html` | Clive product page (ZX Spectrum emulator, Mac, **released 2026-10-30**, App Store id 6825200276). Built 2026-10-31 in Mojo's layout: library shot full width, then four shots two to a row, a text-only formats point, "No games included." and the buttons. Words from `~/Desktop/Clive/fastlane/metadata/en-AU/description.txt` |
+| `clive.html` | Clive product page (ZX Spectrum emulator, Mac, **released 2026-10-30**, App Store id 6825200276). Built 2026-10-31 in Mojo's layout: keyboard shot full width (`.shot--upright` holds it to the screen height), then four shots two to a row, a text-only joystick point, "No games included." and the buttons. Words from `~/Desktop/Clive/fastlane/metadata/en-AU/description.txt` |
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
 | `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
@@ -424,7 +428,7 @@ Things that cost time and will cost it again:
   an edit re-fetches the HTML and keeps the old CSS, so a change appears not to
   have worked. Append `?v=<something>` to both links while previewing, and take
   it off before committing. ⚠️ **Exception, deliberate:** `index.html`, `foodie.html` and `conversion.html` link
-  `site.css?v=9` and `site.js?v=7` (`clive.html`: `site.css?v=10`, for its hero padding), committed and live (the frames, and the
+  `site.css?v=9` and `site.js?v=7` (`clive.html`: `site.css?v=11`, for its hero padding and `.shot--upright`), committed and live (the frames, and the
   enlarged view keeping them, are new CSS and JS those pages need). Mac shots
   (`shot--mac`) never get a frame, on the page or enlarged. Duncan's browser kept showing old spacing
   after a Cmd+Shift+R, and the query string was what got it through. The other
