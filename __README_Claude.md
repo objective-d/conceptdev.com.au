@@ -16,43 +16,29 @@ There is a launch config at `.claude/launch.json` (name: `site`, port 8765) for
 
 ## Pick up here
 
-Rewritten 2026-10-14, the day the Foodie page went live. The tree is clean and
-everything is pushed; nothing is half-built.
+Rewritten 2026-10-31. The old Foodie files are deleted, the dead card CSS is
+gone, Mojo's pictures are WebP, `og:image` is set, and Clive is marked as
+released. Nothing is half-built.
 
-1. **Delete `__foodie.html` and the 23 pre-release Foodie screenshots.** Duncan
-   agreed on 2026-10-14, but the auto-mode safety check blocked `git rm`, so he
-   was given the command to run himself. If they are still on disk, ask him
-   to run it — do not work around the block:
-   `git rm -q __foodie.html $(ls assets/img/foodie/*.jpg | grep -vE "/(ipad|iphone)-")`
-   No page references any of them (checked). Then drop the `__foodie.html` row
-   from **Files** and the swap-pool sentence under **Screenshots**.
-2. **Look at `foodie.html` at phone width and in the 900–1040px band.** See
-   **Never looked at** — the page was rebuilt several times after its only
-   narrow-width check.
-3. **Stiction availability wording.** `stiction.html` has the buttons but no
-   eyebrow, heading or "what it needs to run" line. Needs Duncan's words —
-   **do not draft them**, see **Copy**.
-4. **Mojo still has no App Store button** — its id is unknown. Ask for it.
-5. **Decide on `.product-card*` in `site.css`** — ~21 dead references. Nothing
-   needs it now that Foodie has its page; deleting is the likely answer.
-6. **Downsample `assets/img/mojo/`** (6.8 MB). See **Screenshots**.
-7. **`og:image`** is still unset on every page.
+1. **Clive's full product page.** Clive shipped on 2026-10-30 (free, macOS 26,
+   App Store id **6825200276**). `clive.html` is still the short page — icon,
+   name, one line, App Store / Email us / Privacy. It needs screenshots and
+   points like Mojo's. Both need Duncan: **he takes the pictures and gives the
+   words — do not draft them**, see **Copy**.
+2. **Stiction availability wording.** `stiction.html` has the buttons but no
+   eyebrow, heading or "what it needs to run" line. Needs Duncan's words.
+3. **Mojo still has no App Store button** — its id is unknown. Ask for it.
+4. **Privacy pages have no `og:image`.** Nobody shares them; left alone.
 
 ## Never looked at
 
 **From 2026-10-14 (the Foodie page):**
 
-- **`foodie.html` at phone width.** The *first* version was checked at 375px
-  (no horizontal overflow). It was then rebuilt — new sections, a `features--3`
-  block, a heading-less `.langs` list — and never looked at narrow again.
-- **`foodie.html` between 700 and 1040px.** Only 1280px (and 1024px for the
-  hero gap) was checked.
-- **The home page hero at phone width.** It is now a plain iPad JPEG with a
-  border and radius, and `.hero-shot` takes back the gutter below 700px so it
-  runs edge to edge. That rule was written for the Mojo window with its
-  transparent surround; how the radius and border look edge to edge was not
-  checked. Desktop was checked by `naturalWidth` only (2000 px, shown at
-  1105 px) — the screenshot taken was a stale composite.
+- ✅ **Checked 2026-10-31:** `foodie.html` at 375, 960 and 1024px, and the
+  home page at 375px — no sideways scroll, every image loads, and they look
+  right in a screenshot (the device frame runs edge to edge on the home page at
+  375px and looks fine). Also no sideways scroll on `mojo.html`,
+  `conversion.html`, `stiction.html` and `clive.html` at 375px.
 - **The lightbox on Foodie shots** — never clicked.
 - **The "A first-class Apple citizen" section.** Its `.langs` list sits in a
   `.point__body` with no `h3`, so it keeps `.point__body .langs`'s top margin.
@@ -106,14 +92,13 @@ curl -s https://conceptdev.com.au/assets/css/site.css | diff - assets/css/site.c
 | `mojo.html` | Mojo product page — live, reachable **only from its card** |
 | `conversion_privacy.html`, `mojo_privacy.html`, `stiction_privacy.html`, `foodie_privacy.html`, `clive_privacy.html` | Per-app privacy policies, each linked from its product page. Standalone: their own inline `<style>`, they do **not** load `site.css` |
 | `foodie.html` | Foodie product page (live since 2026-10-14). Copy is Duncan's, from the old foodiesharing.com, in its three groups. Mojo-style points for landscape iPad, Conversion tile row for portrait iPhone |
-| `clive.html` | **Placeholder** for Clive (ZX Spectrum emulator, Mac, not yet released — App Store id 6825200276 per `~/Desktop/Clive` git log, not yet linked). Icon, name, "Coming soon", Duncan's one-line description, Privacy button. Replace with the product page when Clive ships; the home card already links here |
-| `__foodie.html` | The old parked Foodie page — **superseded** by `foodie.html`, with wrong copy (roadmap lists shipped features; pricing is not the shipped model). Agreed for deletion — see **Pick up here** |
+| `clive.html` | Clive (ZX Spectrum emulator, Mac, **released 2026-10-30**, App Store id 6825200276). Still the short page: icon, name, "ZX Spectrum emulator", Duncan's one-line description, App Store / Email us / Privacy. Screenshots and points to come — see **Pick up here** |
 | `assets/css/site.css` | The whole design system — tokens at the top |
 | `assets/js/site.js` | Sticky-header hairline, nav current-page, scroll reveal. Progressive enhancement only; the site works without it. |
 | `assets/img/logo/mark.svg` | The company mark, redrawn as vector |
-| `assets/img/foodie/` | `ipad-0*.jpg` and `iphone-0*.jpg` are the App Store screenshots from `~/Desktop/Foodie4/fastlane/screenshots/en-AU`. `ipad-scaling/converter/share-menu/dark.jpg` were taken on the Foodie-Dev-iPad simulator, landscape, 2026-10-14. `duo-0*.jpg` (added 2026-10-22) are the iPhone Duo App Store pictures, open and sideways, from `~/Desktop/Foodie4/Foodie-fixtures/release-4.1/duo-final/en-AU` (2853×2007), scaled to 1200 px (`duo-01` to 2000 px). Shown in the points layout under the iPhone row — library full width, then two to a row. A tile row matching the iPhone row was tried first and was too small (Duncan). Everything else (23 files, ~5 MB) is pre-release captures, unused, agreed for deletion |
+| `assets/img/foodie/` | `ipad-0*.jpg` and `iphone-0*.jpg` are the App Store screenshots from `~/Desktop/Foodie4/fastlane/screenshots/en-AU`. `ipad-scaling/converter/share-menu/dark.jpg` were taken on the Foodie-Dev-iPad simulator, landscape, 2026-10-14. `duo-0*.jpg` (added 2026-10-22) are the iPhone Duo App Store pictures, open and sideways, from `~/Desktop/Foodie4/Foodie-fixtures/release-4.1/duo-final/en-AU` (2853×2007), scaled to 1200 px (`duo-01` to 2000 px). Shown in the points layout under the iPhone row — library full width, then two to a row. A tile row matching the iPhone row was tried first and was too small (Duncan). The 23 pre-release captures were deleted on 2026-10-31 |
 | `assets/img/conversion/` | One shot per category, named for it — see **Screenshots** below |
-| `assets/img/mojo/` | Nine Mac window captures, numbered in page order — see **Screenshots** below |
+| `assets/img/mojo/` | Nine Mac window captures (WebP), numbered in page order — see **Screenshots** below |
 | `assets/img/stiction/` | `1.jpg`–`8.jpg`, one per level, in page order — see **Screenshots** below |
 
 ## The mark
@@ -189,7 +174,7 @@ easily.
 
 ## Screenshots
 
-`assets/img/foodie/`: the page uses only the `ipad-*` and `iphone-*` files.
+`assets/img/foodie/`: the page uses the `ipad-*`, `iphone-*` and `duo-*` files.
 ⚠️ The Foodie project is at **`~/Desktop/Foodie4`**, not
 `~/Desktop/code/Projects/Foodie4` as this used to say. Duncan's rules for these:
 **landscape iPad, portrait iPhone, and as few as will do the job.**
@@ -255,7 +240,7 @@ are 257 × 560 JPEGs, sized for the tile gallery rather than full-width display.
 
 `assets/img/mojo/` is nine captures of the Mac app, numbered in the order they
 appear on the page. **Duncan took them; there is no capture script.** They are
-full-resolution PNGs with the window's own rounded corners and a transparent
+full-resolution captures with the window's own rounded corners and a transparent
 surround, which is what `.shot--mac` is drawn for — it removes the border and
 background the base rule adds and uses `drop-shadow`, which follows the alpha
 rather than the border box.
@@ -263,6 +248,11 @@ rather than the border box.
 They come in at nine different aspect ratios, from 714 × 1488 to 3224 × 2074.
 The page does not fight that: each one is centred on a panel of a fixed shape.
 Replacing a shot needs no CSS change as long as it keeps a transparent surround.
+
+On 2026-10-31 they were re-encoded from PNG to **WebP** at the same size, which
+keeps the transparency: 6.8 MB → 1.3 MB. To replace one, take Duncan's PNG and run
+`cwebp -q 85 -alpha_q 100 -exact in.png -o NN-name.webp` (Homebrew `cwebp`).
+Not JPEG — JPEG has no transparency.
 
 `assets/img/stiction/` is eight captures, `1.jpg`–`8.jpg`, one per level, in the
 order they appear on the page — the alt text is "Stiction level 1" and so on, so
@@ -303,21 +293,19 @@ Mojo a double-width card and was removed, because Mojo had the least to say and
 the extra space read as a hole.
 
 **Card order follows a rule, set by Duncan on 2026-09-03: released apps first,
-newest release first**, then the unreleased ones. Today that is Foodie (shipped
-2026-10-08, page live 2026-10-14), Mojo, Stiction, Conversion, then Clive and
-Astronomical (unreleased; Clive first because it has a page). When the next app ships it goes to the front —
+newest release first**, then the unreleased ones. Today that is Clive (shipped
+2026-10-30), Foodie (shipped 2026-10-08), Mojo, Stiction, Conversion, then
+Astronomical (unreleased). When the next app ships it goes to the front —
 that is the rule, so apply it rather than asking.
 
 `shelf-card--soon` removes the hover lift from a card with nothing to click. It
 is on Astronomical only — the one app that is not out and has no page. Clive
-(added 2026-10-21) is badged **and** clickable, linking to its placeholder, the
-way Foodie was from 2026-09-30. ⚠️ This
+was badged and clickable from 2026-10-21; the badge came off on 2026-10-31. ⚠️ This
 used to say Foodie too; Foodie lost it on 2026-09-30 and its badge on
 2026-10-14.
 
-⚠️ **`.product-card*` in `site.css` is now dead code.** Nothing in any HTML file
-uses it — the home page moved to `.shelf-card` and no product page uses it. About 21 references. It was left in place rather than deleted; see
-**Known gaps**.
+`.product-card*` and `.products` (the old card grid) were deleted from
+`site.css` on 2026-10-31. `.badge` was kept; the shelf uses it.
 
 `mojo.html` is nine screenshots with the words under each one, two to a row, the
 lead shot full width and the two portrait captures sharing an upright row. It was
@@ -362,7 +350,7 @@ without being asked.
 **577670082** (an old id — the app dates from 2012; v4.0 is a rewrite). ⚠️ The
 older notes here described `foodie.html` as a temporary placeholder and
 `__foodie.html` as the real page to rename over it. **Both are now false** —
-`foodie.html` was written fresh, and `__foodie.html` is dead.
+`foodie.html` was written fresh, and `__foodie.html` was deleted on 2026-10-31.
 
 The copy is **Duncan's own**, from the old foodiesharing.com
 (web.archive.org snapshot 2020-08-11), kept in its three groups — *Your
@@ -428,6 +416,16 @@ Things that cost time and will cost it again:
   stylesheet and `diff` it against the local one. If they match and the live
   page returns 200, the deploy is fine and the browser is lying. Do not "fix"
   CSS that is already correct.
+- **The in-app browser refused `localhost:8765` on 2026-10-31** ("navigation
+  denied"), and `curl` from the shell could not reach the `preview_start`
+  server either. What worked: a `ThreadingHTTPServer` on another port, and
+  headless Chrome (`--headless=new --run-all-compositor-stages-before-draw
+  --virtual-time-budget=40000`). Without the compositor flag, headless
+  screenshots also come back with empty panels.
+- **Headless Chrome has a minimum window width** (about 500px). With
+  `--window-size=375,…` the page is laid out wider and the picture is cut off
+  on the right — it looks like overflow and is not. For a true phone width,
+  load the page in a 375px `<iframe>` inside a wider window.
 - **Do not size a panel and fit the image to it.** `aspect-ratio` on the figure
   with `height: 100%` on the image inside is circular — the image's own height
   feeds back into the panel's, and depending on which way the browser resolves it
@@ -443,8 +441,9 @@ Things that cost time and will cost it again:
   and app-scope bookmarks only — **no network entitlement**, and no URLSession,
   CloudKit or StoreKit in the code. Stores preferences, library folders
   (bookmarks), favourites and recent games in UserDefaults; save slots and
-  played-game pictures in Application Support; reads game controllers. Re-check
-  these before Clive ships — the policy says "no network requests".
+  played-game pictures in Application Support; reads game controllers.
+  Re-checked 2026-10-31 after release: still no network entitlement and no
+  URLSession, CloudKit, StoreKit or WKWebView in its Swift code.
 - **Mac app icons** (Mojo) have a transparent margin, so the `box-shadow` on
   `.app-hero__icon` and `.shelf-card__icon` draws a faint square around them and
   they look small. Clive's was the same, and Duncan asked for it to match
@@ -461,19 +460,9 @@ Things that cost time and will cost it again:
 - **"Sync … across all your devices"** on `foodie.html` is Duncan's wording.
   Today that means iPhone and iPad only — there is no Mac build yet. The page
   also says "iPhone Duo and Mac version coming soon."
-- `og:image` is not set on any page.
-- **`assets/img/mojo/` is 6.8 MB of PNGs**, the largest 1.7 MB. Everything below
-  the lead shot is `loading="lazy"`, so the first paint is not 6.8 MB, but the
-  page is still far heavier than any other. (It was also the home page's lead
-  shot until 2026-10-14; that is now a Foodie JPEG.) Re-encoding is the fix and has not been done;
-  `assets/img/stiction/` is the worked example under **Screenshots**. ⚠️ Mojo's
-  captures have a **transparent surround** that `.shot--mac` depends on, so
-  they cannot simply become JPEGs the way Stiction's did — WebP or PNG
-  re-compression, not JPEG.
-- `assets/img/foodie/` is 8.5 MB: ~3.5 MB used by the live page, ~5 MB of
-  pre-release captures waiting to be deleted (see **Pick up here**).
-- **`.product-card*` in `site.css` is dead** — ~21 references, no HTML uses it.
-  Kept deliberately for now; see **Pick up here**.
+- `og:image` (set 2026-10-31) is the app icon on each app page and the top
+  picture on the home page, as full `https://conceptdev.com.au/…` addresses.
+  Privacy pages have none.
 - **No product page links to another product page.** With the apps out of the
   nav, leaving `mojo.html` means going back to the home page first. Duncan's
   call; flagged in case it is not the intent.
